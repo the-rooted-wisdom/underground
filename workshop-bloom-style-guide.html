@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bloom & Tend — Workshop Campaign Style Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* ── Workshop Sub-Palette: Bloom & Tend ── */
+
+      /* Backgrounds — all light, safe */
+      --blush-parchment:  #f7ede8;
+      --blush-warm:       #f2ddd4;
+      --blush-deep:       #e8c9bc;
+      --cream-white:      #fdf6f2;
+      --bark-rose:        #4a2020;   /* dark footer field */
+
+      /* Decorative / ornamental — NOT for body text */
+      --petal:            #e8a898;   /* ornaments, diamonds, pool fill only */
+      --petal-light:      #f0c4b8;   /* pool fill only */
+      --mauve-decor:      #c090a0;   /* borders, dividers, ornaments only */
+      --mauve-mist:       #e8ccd4;   /* ghost borders only */
+      --sage-decor:       #a8b090;   /* decorative accents only */
+
+      /* Text — all WCAG AA or better on light bg */
+      --ink-warm:         #2a1414;   /* 4.5:1+ — headlines, primary */
+      --rose-text:        #7a2818;   /* 5.2:1 — body copy, mid-level text */
+      --mauve-text:       #6a3848;   /* 5.8:1 — eyebrows, labels, captions */
+      --sage-text:        #4a5438;   /* 6.1:1 — secondary labels, metadata */
+
+      /* CTA colors — used at large size or with sufficient weight */
+      --rose-cta:         #a84030;   /* buttons, links — 4.6:1 on light bg */
+      --rose-cta-hover:   #8a3020;   /* hover state */
+
+      /* On-dark text — used only on bark-rose field */
+      --on-dark-primary:  #f7ede8;   /* ~10:1 on bark-rose */
+      --on-dark-mid:      #e8c9bc;   /* ~7:1 on bark-rose */
+      --on-dark-soft:     rgba(247,237,232,0.75); /* ~5:1 — minimum use only */
+
+      /* Pool colors — decorative blur only, never text */
+      --pool-petal:       #e8a898;
+      --pool-mauve:       #c898a8;
+      --pool-blush:       #f0c4b8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Jost", sans-serif;
+      background: var(--blush-parchment);
+      color: var(--ink-warm);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ── PAPER GRAIN ── */
+    body::before {
+      content: "";
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 500;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 300px;
+    }
+
+    /* ── LAYOUT ── */
+    .page { max-width: 980px; margin: 0 auto; padding: 0 2.5rem; }
+
+    /* ── COVER ── */
+    .cover {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center;
+      background: var(--blush-parchment);
+      position: relative; overflow: hidden;
+      padding: 6rem 2rem;
+    }
+    .cover-pool { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; }
+    .cp1 { width: 650px; height: 500px; background: var(--pool-petal); top: -20%; left: -12%; opacity: 0.12; }
+    .cp2 { width: 500px; height: 400px; background: var(--pool-mauve); bottom: -15%; right: -10%; opacity: 0.10; }
+    .cp3 { width: 380px; height: 300px; background: var(--pool-blush); top: 35%; right: -5%; opacity: 0.08; }
+    .cp4 { width: 300px; height: 250px; background: #d4a050; bottom: 20%; left: 5%; opacity: 0.06; }
+
+    .cover-content { position: relative; z-index: 1; }
+    .cover-eyebrow {
+      font-size: 0.65rem; letter-spacing: 0.42em; text-transform: uppercase;
+      color: var(--mauve-text); margin-bottom: 2rem;
+    }
+
+    .petal-ornament {
+      width: 64px; height: 64px; margin: 0 auto 2rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .petal-ornament svg { width: 100%; height: 100%; }
+
+    .cover-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 400; color: var(--ink-warm); line-height: 1.05; margin-bottom: 0.15em;
+    }
+    .cover-title em { font-style: italic; color: var(--rose-cta); }
+    .cover-sub {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.35rem; font-style: italic; font-weight: 300;
+      color: var(--rose-text); margin-bottom: 1rem;
+    }
+    .cover-byline {
+      font-size: 0.7rem; letter-spacing: 0.26em; text-transform: uppercase;
+      color: var(--mauve-text); margin-top: 2.5rem;
+    }
+    .cover-presenters {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.15rem; font-style: italic;
+      color: var(--rose-text); margin-top: 0.5rem;
+    }
+    .cover-date {
+      font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--sage-text); margin-top: 1rem;
+    }
+
+    /* ── ORNAMENT ── */
+    .orn { display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0; }
+    .orn-line { flex: 1; max-width: 100px; height: 1px; background: linear-gradient(to right, transparent, rgba(106,56,72,0.3), transparent); }
+    .orn-dia { width: 5px; height: 5px; background: var(--mauve-text); transform: rotate(45deg); }
+
+    /* ── SECTION WRAPPER ── */
+    .sg-section {
+      padding: 6rem 0;
+      border-bottom: 1px solid rgba(106,56,72,0.12);
+      position: relative; overflow: hidden;
+      background: var(--blush-parchment);
+    }
+    .sg-section:last-child { border-bottom: none; }
+    .section-pool { position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none; opacity: 0.08; }
+
+    .sg-section-header { margin-bottom: 3.5rem; }
+    .sg-section-num { font-size: 0.62rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--mauve-text); margin-bottom: 0.5rem; }
+    .sg-section-title { font-family: "Cormorant Garamond", serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; color: var(--ink-warm); line-height: 1.1; }
+    .sg-section-desc { font-size: 0.9rem; color: var(--rose-text); max-width: 600px; margin-top: 0.8rem; line-height: 1.8; }
+
+    /* ── PALETTE GRID ── */
+    .palette-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1.5rem; }
+    .palette-group { margin-bottom: 3rem; }
+    .palette-group-label { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--sage-text); margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(106,56,72,0.15); }
+    .swatch-wrap { display: flex; flex-direction: column; gap: 0.7rem; }
+    .swatch {
+      height: 90px; border-radius: 4px;
+      box-shadow: 0 2px 12px rgba(74,32,20,0.1);
+      position: relative; overflow: hidden;
+    }
+    .swatch::after {
+      content: ""; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 200px;
+    }
+    .swatch-name { font-size: 0.75rem; font-weight: 500; color: var(--ink-warm); letter-spacing: 0.04em; }
+    .swatch-role { font-size: 0.68rem; color: var(--rose-text); }
+    .swatch-hex { font-size: 0.7rem; color: var(--rose-text); font-family: monospace; letter-spacing: 0.06em; margin-top: 0.2rem; }
+
+    /* ── TYPOGRAPHY SPECIMENS ── */
+    .type-specimen {
+      margin-bottom: 3rem; padding: 2.5rem;
+      background: rgba(253,246,242,0.7);
+      border: 1px solid rgba(184,120,138,0.15); border-radius: 3px;
+    }
+    .type-label { font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--mauve-text); margin-bottom: 1.2rem; }
+    .type-meta { display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid rgba(106,56,72,0.12); }
+    .type-meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+    .type-meta-key { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--sage-text); }
+    .type-meta-val { font-size: 0.8rem; color: var(--rose-text); }
+
+    .t-display { font-family: "Cormorant Garamond", serif; font-size: clamp(3.5rem, 7vw, 5.5rem); font-weight: 400; color: var(--ink-warm); line-height: 1.0; }
+    .t-display-italic { font-family: "Cormorant Garamond", serif; font-size: clamp(3rem, 6vw, 5rem); font-weight: 300; font-style: italic; color: var(--rose-cta); line-height: 1.0; }
+    .t-h2 { font-family: "Cormorant Garamond", serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 400; color: var(--ink-warm); line-height: 1.1; }
+    .t-h3 { font-family: "Cormorant Garamond", serif; font-size: 1.4rem; font-weight: 500; color: var(--rose-text); }
+    .t-eyebrow { font-size: 0.65rem; letter-spacing: 0.42em; text-transform: uppercase; color: var(--mauve-text); }
+    .t-body { font-family: "Jost", sans-serif; font-size: 0.9rem; font-weight: 300; color: var(--rose-text); line-height: 1.8; max-width: 60ch; }
+    .t-quote { font-family: "Cormorant Garamond", serif; font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-style: italic; font-weight: 300; color: var(--ink-warm); line-height: 1.4; }
+    .t-caption { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sage-text); }
+
+    /* ── CAMPAIGN CONCEPT CARDS ── */
+    .concept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    @media (max-width: 700px) { .concept-grid { grid-template-columns: 1fr; } }
+
+    .concept-card {
+      padding: 2.5rem;
+      background: rgba(253,246,242,0.7);
+      border: 1px solid rgba(184,120,138,0.2);
+      border-radius: 3px;
+    }
+    .concept-card-title { font-family: "Cormorant Garamond", serif; font-size: 1.4rem; color: var(--ink-warm); margin-bottom: 0.8rem; }
+    .concept-card p { font-size: 0.88rem; color: var(--rose-text); line-height: 1.8; }
+    .concept-card ul { list-style: none; margin-top: 1rem; }
+    .concept-card li { font-size: 0.85rem; color: var(--rose-text); padding-left: 1.2rem; position: relative; line-height: 1.8; }
+    .concept-card li::before { content: "◈"; position: absolute; left: 0; color: var(--mauve-decor); font-size: 0.7rem; top: 0.15em; }
+
+    /* ── SOCIAL MOCKUP ── */
+    .social-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    @media (max-width: 700px) { .social-grid { grid-template-columns: 1fr 1fr; } }
+
+    .social-card {
+      aspect-ratio: 1;
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 1.5rem;
+    }
+    .sc-bg { position: absolute; inset: 0; }
+    .sc-pool { position: absolute; border-radius: 50%; filter: blur(50px); }
+    .sc-content { position: relative; z-index: 1; }
+    .sc-eyebrow { font-size: 0.55rem; letter-spacing: 0.35em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .sc-title { font-family: "Cormorant Garamond", serif; font-size: clamp(1rem, 2.5vw, 1.4rem); font-weight: 400; line-height: 1.15; }
+    .sc-date { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; margin-top: 0.6rem; }
+    .sc-handle { font-size: 0.58rem; letter-spacing: 0.18em; margin-top: 0.3rem; }
+
+    /* ── SLIDE LAYOUT MOCKUP ── */
+    .slide-wrap {
+      width: 100%; aspect-ratio: 16/9;
+      border-radius: 4px; overflow: hidden;
+      position: relative; margin-bottom: 2rem;
+      box-shadow: 0 8px 48px rgba(74,40,24,0.12);
+    }
+    .slide-bg { position: absolute; inset: 0; }
+    .slide-pool { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; }
+    .slide-content {
+      position: relative; z-index: 1;
+      height: 100%; display: flex; flex-direction: column; justify-content: center;
+      padding: 5% 7%;
+    }
+    .slide-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 6%; height: 100%; align-items: center; }
+    .slide-eyebrow { font-size: clamp(0.42rem, 0.8vw, 0.62rem); letter-spacing: 0.38em; text-transform: uppercase; margin-bottom: 0.8em; }
+    .slide-title { font-family: "Cormorant Garamond", serif; font-size: clamp(1.5rem, 4vw, 3.2rem); font-weight: 400; line-height: 1.05; }
+    .slide-sub { font-family: "Cormorant Garamond", serif; font-size: clamp(0.8rem, 1.5vw, 1.2rem); font-style: italic; font-weight: 300; margin-top: 0.4em; }
+    .slide-body { font-size: clamp(0.55rem, 0.9vw, 0.82rem); line-height: 1.8; margin-top: 1em; max-width: 40ch; font-weight: 300; }
+    .slide-presenters { font-size: clamp(0.45rem, 0.7vw, 0.65rem); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 1.5em; }
+    .slide-logo { font-family: "Cormorant Garamond", serif; font-size: clamp(0.6rem, 1.2vw, 0.95rem); font-style: italic; }
+    .slide-date { font-size: clamp(0.42rem, 0.7vw, 0.6rem); letter-spacing: 0.25em; text-transform: uppercase; margin-top: 0.4em; }
+
+    .slide-right-art {
+      height: 100%; display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .slide-circle {
+      width: clamp(120px, 18vw, 220px); height: clamp(120px, 18vw, 220px);
+      border-radius: 50%; position: relative; overflow: hidden;
+      box-shadow: 0 8px 40px rgba(168,120,100,0.25);
+    }
+    .slide-circle-inner { position: absolute; inset: 0; border-radius: 50%; }
+    .slide-circle-pool { position: absolute; border-radius: 50%; filter: blur(30px); }
+
+    .slide-divider { width: 1px; height: 70%; background: rgba(184,120,138,0.25); margin: auto 0; }
+
+    /* ── SIGNUP PAGE MOCKUP ── */
+    .signup-wrap {
+      border-radius: 4px; overflow: hidden;
+      box-shadow: 0 8px 48px rgba(74,40,24,0.12);
+    }
+    .signup-hero {
+      padding: 5rem 3rem;
+      background: var(--blush-warm);
+      position: relative; overflow: hidden; text-align: center;
+    }
+    .signup-hero-pool { position: absolute; border-radius: 50%; filter: blur(70px); pointer-events: none; }
+    .signup-hero-content { position: relative; z-index: 1; }
+    .signup-body {
+      padding: 3rem;
+      background: var(--cream-white);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+    }
+    @media (max-width: 700px) { .signup-body { grid-template-columns: 1fr; } }
+
+    .signup-detail { font-size: 0.85rem; color: var(--rose-text); line-height: 1.9; }
+    .signup-detail strong { font-weight: 500; color: var(--ink-warm); }
+    .signup-input {
+      width: 100%; padding: 0.75rem 1rem;
+      background: rgba(247,237,232,0.6);
+      border: 1px solid rgba(184,120,138,0.3);
+      border-radius: 3px; font-family: "Jost", sans-serif;
+      font-size: 0.85rem; font-weight: 300; color: var(--ink-warm);
+      outline: none; margin-bottom: 1rem;
+    }
+    .signup-btn {
+      display: inline-block;
+      padding: 0.9rem 2.5rem;
+      background: var(--rose-cta); color: var(--cream-white);
+      font-family: "Jost", sans-serif; font-size: 0.68rem;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      border: none; border-radius: 3px; cursor: pointer;
+      width: 100%; margin-top: 0.5rem;
+    }
+    .signup-note { font-size: 0.7rem; color: var(--sage-text); text-align: center; margin-top: 0.75rem; }
+
+    /* ── USAGE BLOCKS ── */
+    .usage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+    @media (max-width: 700px) { .usage-grid { grid-template-columns: 1fr; } }
+    .usage-card {
+      padding: 2rem;
+      background: rgba(253,246,242,0.7);
+      border: 1px solid rgba(184,120,138,0.15);
+      border-radius: 3px;
+    }
+    .usage-card-title { font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--mauve-text); margin-bottom: 1rem; }
+    .usage-card p, .usage-card li { font-size: 0.85rem; color: var(--rose-text); line-height: 1.8; }
+    .usage-card ul { list-style: none; }
+    .usage-card li { padding-left: 1.2rem; position: relative; }
+    .usage-card li::before { content: "–"; position: absolute; left: 0; color: var(--mauve-text); }
+
+    /* ── TOKEN TABLE ── */
+    .token-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    .token-table th { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--sage-text); font-weight: 500; padding: 0.6rem 0.8rem; text-align: left; border-bottom: 1px solid rgba(106,56,72,0.2); }
+    .token-table td { padding: 0.7rem 0.8rem; color: var(--rose-text); border-bottom: 1px solid rgba(106,56,72,0.08); vertical-align: top; }
+    .token-table tr:hover td { background: rgba(232,200,188,0.12); }
+    .token-section-row td { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--sage-text); padding: 1.2rem 0.8rem 0.5rem; border-bottom: 1px solid rgba(74,84,56,0.2); }
+
+    /* ── FOOTER ── */
+    .sg-footer {
+      text-align: center; padding: 5rem 2rem;
+      background: var(--bark-rose);
+    }
+    .sg-footer-title { font-family: "Cormorant Garamond", serif; font-size: 1.6rem; font-style: italic; color: var(--on-dark-primary); margin-bottom: 0.5rem; }
+    .sg-footer-sub { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--on-dark-mid); margin-bottom: 0.8rem; }
+    .sg-footer-note { font-size: 0.72rem; color: rgba(247,237,232,0.75); }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     COVER
+══════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-pool cp1"></div>
+  <div class="cover-pool cp2"></div>
+  <div class="cover-pool cp3"></div>
+  <div class="cover-pool cp4"></div>
+  <div class="cover-content">
+    <p class="cover-eyebrow">The Rooted Wisdom · Campaign Style Guide</p>
+
+    <div class="petal-ornament">
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="32" cy="18" rx="8" ry="14" fill="#e8a898" opacity="0.7" transform="rotate(0,32,32)"/>
+        <ellipse cx="32" cy="18" rx="8" ry="14" fill="#d4a0b0" opacity="0.55" transform="rotate(72,32,32)"/>
+        <ellipse cx="32" cy="18" rx="8" ry="14" fill="#e8c9bc" opacity="0.6" transform="rotate(144,32,32)"/>
+        <ellipse cx="32" cy="18" rx="8" ry="14" fill="#c8614a" opacity="0.45" transform="rotate(216,32,32)"/>
+        <ellipse cx="32" cy="18" rx="8" ry="14" fill="#b8788a" opacity="0.5" transform="rotate(288,32,32)"/>
+        <circle cx="32" cy="32" r="6" fill="#f0c4b8" opacity="0.9"/>
+        <circle cx="32" cy="32" r="3" fill="#c8614a" opacity="0.7"/>
+      </svg>
+    </div>
+
+    <h1 class="cover-title">Beauty and<br>the <em>Skin</em></h1>
+    <p class="cover-sub">The Medicinal and Spiritual Properties of Herbs</p>
+
+    <div class="orn" style="justify-content:center;">
+      <div class="orn-line"></div>
+      <div class="orn-dia"></div>
+      <div class="orn-line"></div>
+    </div>
+
+    <p class="cover-byline">Presented by</p>
+    <p class="cover-presenters">Dara Pressley · Julie Moody-Freeman · Ericka Mabrie</p>
+    <p class="cover-date">Saturday, April 19, 2026 · 12pm PT · Virtual · Campaign Style Guide</p>
+  </div>
+</div>
+
+<div class="page">
+
+<!-- ══════════════════════════════════════
+     01 · CONCEPT
+══════════════════════════════════════ -->
+<section class="sg-section">
+  <div class="section-pool" style="width:500px;height:400px;background:var(--pool-petal);top:-10%;right:-12%;"></div>
+
+  <div class="sg-section-header">
+    <p class="sg-section-num">01 · Campaign Concept</p>
+    <h2 class="sg-section-title">The Spirit of This Workshop</h2>
+    <p class="sg-section-desc">Beauty as a practice, not a performance. Skin as a living record. Julie and Ericka bring their own depth to this dialogue, and together we'll explore what it means to tend to ourselves from the inside out.</p>
+  </div>
+
+  <div style="padding:2.5rem;background:rgba(253,246,242,0.7);border:1px solid rgba(106,56,72,0.15);border-radius:3px;margin-bottom:2.5rem;">
+    <p class="t-quote">"Skin is not just a surface. It is a record, a threshold, and a place of meeting."</p>
+    <div class="orn" style="margin:1.5rem 0;">
+      <div class="orn-line"></div><div class="orn-dia"></div><div class="orn-line"></div>
+    </div>
+    <p class="t-caption">Campaign Voice Anchor · Beauty and the Skin</p>
+  </div>
+
+  <div class="concept-grid">
+    <div class="concept-card">
+      <p class="concept-card-title">Healing Skin Conditions</p>
+      <p>The skin speaks. Breakouts, dryness, sensitivity, inflammation — these are not flaws to correct but communications to understand. We'll work with herbs that have long been used to support the skin in its own language.</p>
+      <ul>
+        <li>Reading what the skin is expressing</li>
+        <li>Anti-inflammatory and vulnerary herbs</li>
+        <li>Plant-based formulas for skin healing</li>
+        <li>Ancestral skincare traditions</li>
+      </ul>
+    </div>
+    <div class="concept-card">
+      <p class="concept-card-title">Healing Through the Skin</p>
+      <p>The skin is also a doorway in. Topical herbs can move into the body — easing muscle aches, releasing cramps, soothing deep tension. What we apply on the outside does not stay there.</p>
+      <ul>
+        <li>Transdermal herb absorption</li>
+        <li>Poultices, salves, and liniments</li>
+        <li>Muscle aches, cramps, and tension</li>
+        <li>Circulatory and lymphatic support</li>
+      </ul>
+    </div>
+    <div class="concept-card">
+      <p class="concept-card-title">Healing the Spirit Through the Skin</p>
+      <p>Touch is one of the oldest medicines. Ritual bathing, anointing, anointed oils — across traditions, tending the body has always been a form of spiritual care. We'll explore what that looks like in practice.</p>
+      <ul>
+        <li>Ritual skin care as spiritual practice</li>
+        <li>Aromatic and nervine herbs</li>
+        <li>Bathing and anointing traditions</li>
+        <li>The body as sacred ground</li>
+      </ul>
+    </div>
+    <div class="concept-card">
+      <p class="concept-card-title">Workshop Details</p>
+      <ul>
+        <li>Saturday, April 19, 2026</li>
+        <li>12pm PT · Virtual</li>
+        <li>Dara Pressley · Julie Moody-Freeman · Ericka Mabrie</li>
+        <li>therootedwisdom.com</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     02 · COLOR PALETTE
+══════════════════════════════════════ -->
+<section class="sg-section">
+  <div class="section-pool" style="width:450px;height:350px;background:var(--pool-mauve);bottom:-5%;left:-10%;"></div>
+
+  <div class="sg-section-header">
+    <p class="sg-section-num">02 · Color Palette</p>
+    <h2 class="sg-section-title">Bloom & Tend Colors</h2>
+    <p class="sg-section-desc">A sub-palette that extends the main Rooted Wisdom world into petal and blush territory. The parchment shifts warm-rose; the rust deepens to rose-red; watercolor pools move from blue into mauve and petal. Sage remains as the herbal anchor.</p>
+  </div>
+
+  <div class="palette-group">
+    <p class="palette-group-label">Backgrounds & Fields</p>
+    <div class="palette-grid">
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#f7ede8;"></div>
+        <p class="swatch-name">Blush Parchment</p>
+        <p class="swatch-role">Primary bg</p>
+        <p class="swatch-hex">#f7ede8</p>
+      </div>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#f2ddd4;"></div>
+        <p class="swatch-name">Blush Warm</p>
+        <p class="swatch-role">Alt section bg</p>
+        <p class="swatch-hex">#f2ddd4</p>
+      </div>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#e8c9bc;"></div>
+        <p class="swatch-name">Blush Deep</p>
+        <p class="swatch-role">Accent section bg</p>
+        <p class="swatch-hex">#e8c9bc</p>
+      </div>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#fdf6f2;"></div>
+        <p class="swatch-name">Cream White</p>
+        <p class="swatch-role">Card / form bg</p>
+        <p class="swatch-hex">#fdf6f2</p>
+      </div>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#5c3030;"></div>
+        <p class="swatch-name">Bark Rose</p>
+        <p class="swatch-role">Footer / dark bg</p>
+        <p class="swatch-hex">#5c3030</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="palette-group">
+    <p class="palette-group-label">Petal & Rose — Primary Accents</p>
+    <div class="palette-grid">
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#e8a898;"></div>
+        <p class="swatch-name">Petal</p>
+        <p class="swatch-role">Watercolor pool · ornaments</p>
+        <p class="swatch-hex">#e8a898</p>
+      </div>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#f0c4b8;"></div>
+        <p class="swatch-name">Petal Light</p>
+        <p class="swatch-role">Pool fill · borders</p>
+        <p class="swatch-hex">#f0c4b8</p>
+      </div>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#c8614a;"></div>
+        <p class="swatch-name">Rose</p>
+        <p class="swatch-role">Primary CTA · links</p>
+        <p class="swatch-hex">#c8614a</p>
+      </div>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#a84030;"></div>
+        <p class="swatch-name">Rose Dark</p>
+        <p class="swatch-role">Hover · headings on light</p>
+        <p class="swatch-hex">#a84030</p>
+      </div>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#e0896e;"></div>
+        <p class="swatch-name">Rose Light</p>
+        <p class="swatch-role">Soft CTA · highlights</p>
+        <p class="swatch-hex">#e0896e</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="palette-group">
+    <p class="palette-group-label">Mauve — Secondary Accents</p>
+    <div class="palette-grid">
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#b8788a;"></div>
+        <p class="swatch-name">Mauve</p>
+        <p class="swatch-role">Eyebrows · labels · pool</p>
+        <p class="swatch-hex">#b8788a</p>
+      </div>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#d4a0b0;"></div>
+        <p class="swatch-name">Mauve Light</p>
+        <p class="swatch-role">Borders · soft accents</p>
+        <p class="swatch-hex">#d4a0b0</p>
+      </div>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#e8ccd4;"></div>
+        <p class="swatch-name">Mauve Mist</p>
+        <p class="swatch-role">Dividers · ghost borders</p>
+        <p class="swatch-hex">#e8ccd4</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="palette-group">
+    <p class="palette-group-label">Sage Green — Grounding Herbal Anchor</p>
+    <div class="palette-grid">
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#8a9078;"></div>
+        <p class="swatch-name">Blush Sage</p>
+        <p class="swatch-role">Captions · secondary labels</p>
+        <p class="swatch-hex">#8a9078</p>
+      </div>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#b0b898;"></div>
+        <p class="swatch-name">Sage Light</p>
+        <p class="swatch-role">Decorative accent</p>
+        <p class="swatch-hex">#b0b898</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="palette-group" style="margin-bottom:0;">
+    <p class="palette-group-label">Text Hierarchy</p>
+    <div class="palette-grid">
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#2e1818;"></div>
+        <p class="swatch-name">Ink Warm</p>
+        <p class="swatch-role">Primary text</p>
+        <p class="swatch-hex">#2e1818</p>
+      </div>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#7a3a38;"></div>
+        <p class="swatch-name">Mid Rose</p>
+        <p class="swatch-role">Body copy</p>
+        <p class="swatch-hex">#7a3a38</p>
+      </div>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#a86858;"></div>
+        <p class="swatch-name">Soft Rose</p>
+        <p class="swatch-role">Captions · meta</p>
+        <p class="swatch-hex">#a86858</p>
+      </div>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#fdf6f2; border:1px solid rgba(184,120,138,0.2);"></div>
+        <p class="swatch-name">Cream White</p>
+        <p class="swatch-role">Text on dark bg</p>
+        <p class="swatch-hex">#fdf6f2</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     03 · TYPOGRAPHY
+══════════════════════════════════════ -->
+<section class="sg-section">
+  <div class="section-pool" style="width:400px;height:320px;background:var(--pool-blush);top:-8%;right:-8%;"></div>
+
+  <div class="sg-section-header">
+    <p class="sg-section-num">03 · Typography</p>
+    <h2 class="sg-section-title">Same Typefaces, New Warmth</h2>
+    <p class="sg-section-desc">Cormorant Garamond and Jost carry over from the main site for visual family continuity. In this campaign, display text shifts from bark to bark-rose, and italic color moves from rust to rose. The letterforms feel just as rooted — just more in bloom.</p>
+  </div>
+
+  <div class="type-specimen">
+    <p class="type-label">Display · Cormorant Garamond 400</p>
+    <p class="t-display">Tend the skin<br>you live in.</p>
+    <div class="type-meta">
+      <div class="type-meta-item"><p class="type-meta-key">Font</p><p class="type-meta-val">Cormorant Garamond</p></div>
+      <div class="type-meta-item"><p class="type-meta-key">Weight</p><p class="type-meta-val">400</p></div>
+      <div class="type-meta-item"><p class="type-meta-key">Color</p><p class="type-meta-val">Bark Rose #5c3030</p></div>
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <p class="type-label">Display Italic · Cormorant Garamond 300 Italic</p>
+    <p class="t-display-italic">What the plants<br>have always known.</p>
+    <div class="type-meta">
+      <div class="type-meta-item"><p class="type-meta-key">Font</p><p class="type-meta-val">Cormorant Garamond</p></div>
+      <div class="type-meta-item"><p class="type-meta-key">Weight</p><p class="type-meta-val">300 Italic</p></div>
+      <div class="type-meta-item"><p class="type-meta-key">Color</p><p class="type-meta-val">Rose #c8614a</p></div>
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <p class="type-label">Pull Quote · Cormorant Garamond Italic</p>
+    <p class="t-quote">"This is a workshop for people who want their beauty rituals to mean something."</p>
+    <div class="type-meta">
+      <div class="type-meta-item"><p class="type-meta-key">Font</p><p class="type-meta-val">Cormorant Garamond 300i</p></div>
+      <div class="type-meta-item"><p class="type-meta-key">Color</p><p class="type-meta-val">Bark Rose</p></div>
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <p class="type-label">Eyebrow / Label · Jost 400</p>
+    <p class="t-eyebrow">The Rooted Wisdom · Workshop Series</p>
+    <div class="type-meta">
+      <div class="type-meta-item"><p class="type-meta-key">Font</p><p class="type-meta-val">Jost</p></div>
+      <div class="type-meta-item"><p class="type-meta-key">Size</p><p class="type-meta-val">0.65rem</p></div>
+      <div class="type-meta-item"><p class="type-meta-key">Tracking</p><p class="type-meta-val">0.42em</p></div>
+      <div class="type-meta-item"><p class="type-meta-key">Color</p><p class="type-meta-val">Mauve #b8788a</p></div>
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <p class="type-label">Body Copy · Jost 300</p>
+    <p class="t-body">Skin has memory. It holds season and stress, joy and grief. In this workshop, Dara, Julie, and Ericka bring together herbal tradition and hands-on practice to work with what plants have long offered — the kind of care that goes beneath the surface.</p>
+    <div class="type-meta">
+      <div class="type-meta-item"><p class="type-meta-key">Font</p><p class="type-meta-val">Jost 300</p></div>
+      <div class="type-meta-item"><p class="type-meta-key">Size</p><p class="type-meta-val">0.9rem</p></div>
+      <div class="type-meta-item"><p class="type-meta-key">Color</p><p class="type-meta-val">Mid Rose #7a3a38</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     04 · SLIDE PRESENTATION MOCKUPS
+══════════════════════════════════════ -->
+<section class="sg-section">
+  <div class="section-pool" style="width:500px;height:400px;background:var(--pool-petal);bottom:-10%;left:-8%;"></div>
+
+  <div class="sg-section-header">
+    <p class="sg-section-num">04 · Slide Presentation</p>
+    <h2 class="sg-section-title">Title & Content Slide Layout</h2>
+    <p class="sg-section-desc">Slides carry the blush parchment base with watercolor pools in petal and mauve. Type is set large and generous — these are teaching slides, not data slides. The three presenters are credited equally on the title card.</p>
+  </div>
+
+  <!-- Title Slide -->
+  <p class="t-caption" style="margin-bottom:1rem;">Title Slide</p>
+  <div class="slide-wrap">
+    <div class="slide-bg" style="background:var(--blush-parchment);"></div>
+    <div class="slide-pool" style="width:60%;height:150%;background:var(--pool-petal);top:-30%;left:-15%;opacity:0.22;"></div>
+    <div class="slide-pool" style="width:40%;height:120%;background:var(--pool-mauve);bottom:-20%;right:-10%;opacity:0.18;"></div>
+    <div class="slide-content">
+      <div class="slide-grid">
+        <div>
+          <p class="slide-eyebrow" style="color:var(--mauve-text);">The Rooted Wisdom · Workshop Series</p>
+          <h1 class="slide-title" style="color:var(--ink-warm);">Beauty and the Skin<br><em style="font-style:italic;color:var(--rose-cta);">The Medicinal &amp; Spiritual Properties of Herbs</em></h1>
+          <p class="slide-sub" style="color:var(--rose-text);">Saturday, April 19, 2026 · 12pm PT · Virtual</p>
+          <div class="orn" style="margin:1.2em 0;">
+            <div class="orn-line"></div><div class="orn-dia"></div><div class="orn-line"></div>
+          </div>
+          <p class="slide-presenters" style="color:var(--rose-text);">Dara Pressley &nbsp;·&nbsp; Julie Moody-Freeman &nbsp;·&nbsp; Ericka Mabrie</p>
+          <p class="slide-date" style="color:var(--sage-text);">therootedwisdom.com</p>
+        </div>
+        <div class="slide-right-art">
+          <div style="display:flex;gap:clamp(8px,1.5vw,16px);align-items:center;">
+            <div class="slide-divider"></div>
+            <div style="display:flex;flex-direction:column;gap:clamp(10px,2vw,20px);align-items:center;">
+              <div class="slide-circle">
+                <div class="slide-circle-inner" style="background:var(--blush-deep);"></div>
+                <div class="slide-circle-pool" style="width:80%;height:80%;background:var(--pool-petal);top:-10%;left:-10%;opacity:0.6;"></div>
+                <div class="slide-circle-pool" style="width:60%;height:60%;background:var(--pool-mauve);bottom:-10%;right:-10%;opacity:0.5;"></div>
+              </div>
+              <div style="text-align:center;">
+                <p class="slide-logo" style="color:var(--rose-text);">The Rooted Wisdom</p>
+                <p class="slide-date" style="color:var(--sage-text);">therootedwisdom.com</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content Slide -->
+  <p class="t-caption" style="margin-bottom:1rem;margin-top:2.5rem;">Content Slide — Teaching Layout</p>
+  <div class="slide-wrap">
+    <div class="slide-bg" style="background:var(--cream-white);"></div>
+    <div class="slide-pool" style="width:50%;height:120%;background:var(--pool-blush);top:-20%;right:-8%;opacity:0.15;"></div>
+    <div class="slide-content" style="padding:4% 6%;">
+      <p class="slide-eyebrow" style="color:var(--mauve-text);margin-bottom:0.6em;">Three Ways Herbs Meet the Skin</p>
+      <h2 class="slide-title" style="color:var(--ink-warm);font-size:clamp(1.2rem,3vw,2.4rem);margin-bottom:0.5em;">The skin is a surface,<br>a doorway, and a record.</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:3%;margin-top:2%;">
+        <div style="padding:clamp(0.6rem,1.5vw,1.2rem);background:rgba(247,237,232,0.7);border:1px solid rgba(106,56,72,0.15);border-radius:3px;">
+          <p style="font-size:clamp(0.52rem,0.9vw,0.72rem);letter-spacing:0.25em;text-transform:uppercase;color:var(--mauve-text);margin-bottom:0.5em;">Healing the Skin</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.65rem,1.2vw,0.95rem);color:var(--rose-text);font-style:italic;line-height:1.5;">Conditions, inflammation, and what the skin is trying to tell us.</p>
+        </div>
+        <div style="padding:clamp(0.6rem,1.5vw,1.2rem);background:rgba(247,237,232,0.7);border:1px solid rgba(106,56,72,0.15);border-radius:3px;">
+          <p style="font-size:clamp(0.52rem,0.9vw,0.72rem);letter-spacing:0.25em;text-transform:uppercase;color:var(--mauve-text);margin-bottom:0.5em;">Healing Through the Skin</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.65rem,1.2vw,0.95rem);color:var(--rose-text);font-style:italic;line-height:1.5;">Muscle aches, cramps, and what enters through topical application.</p>
+        </div>
+        <div style="padding:clamp(0.6rem,1.5vw,1.2rem);background:rgba(247,237,232,0.7);border:1px solid rgba(106,56,72,0.15);border-radius:3px;">
+          <p style="font-size:clamp(0.52rem,0.9vw,0.72rem);letter-spacing:0.25em;text-transform:uppercase;color:var(--mauve-text);margin-bottom:0.5em;">Healing the Spirit</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.65rem,1.2vw,0.95rem);color:var(--rose-text);font-style:italic;line-height:1.5;">Ritual, touch, and the body as a site of spiritual care.</p>
+        </div>
+      </div>
+      <p style="position:absolute;bottom:4%;right:5%;font-size:clamp(0.42rem,0.65vw,0.6rem);letter-spacing:0.2em;text-transform:uppercase;color:var(--sage-text);">Beauty and the Skin · therootedwisdom.com</p>
+    </div>
+  </div>
+
+  <!-- Dark/Rose Slide -->
+  <p class="t-caption" style="margin-bottom:1rem;margin-top:2.5rem;">Emphasis Slide — Dark Field</p>
+  <div class="slide-wrap">
+    <div class="slide-bg" style="background:var(--bark-rose);"></div>
+    <div class="slide-pool" style="width:70%;height:120%;background:#8a3040;top:-20%;right:-15%;opacity:0.5;"></div>
+    <div class="slide-pool" style="width:50%;height:100%;background:#4a2820;bottom:-20%;left:-10%;opacity:0.6;"></div>
+    <div class="slide-pool" style="width:40%;height:80%;background:var(--pool-petal);top:10%;left:20%;opacity:0.12;"></div>
+    <div class="slide-content" style="justify-content:center;align-items:center;text-align:center;">
+      <p class="slide-eyebrow" style="color:var(--on-dark-mid);margin-bottom:1em;">Beauty and the Skin</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,4vw,3rem);font-style:italic;font-weight:300;color:var(--on-dark-primary);line-height:1.3;max-width:22ch;margin:0 auto;">"Beauty as a practice, not a performance. Skin as a living record."</p>
+      <div style="display:flex;justify-content:center;margin:1.5em 0;">
+        <div style="display:flex;align-items:center;gap:1em;">
+          <div style="width:60px;height:1px;background:rgba(247,237,232,0.3);"></div>
+          <div style="width:5px;height:5px;background:var(--on-dark-mid);transform:rotate(45deg);"></div>
+          <div style="width:60px;height:1px;background:rgba(247,237,232,0.3);"></div>
+        </div>
+      </div>
+      <p class="slide-date" style="color:var(--on-dark-mid);">Dara Pressley · Julie Moody-Freeman · Ericka Mabrie</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     05 · SOCIAL MEDIA
+══════════════════════════════════════ -->
+<section class="sg-section">
+  <div class="section-pool" style="width:420px;height:320px;background:var(--pool-petal);top:-5%;right:-8%;"></div>
+
+  <div class="sg-section-header">
+    <p class="sg-section-num">05 · Social Media</p>
+    <h2 class="sg-section-title">Feed Post Concepts</h2>
+    <p class="sg-section-desc">Three post types for the campaign: an announcement card, a quote card from one of the presenters, and a workshop detail card. All use the blush palette with Cormorant Garamond headlines. CTAs are plain uppercase text — no button-pill shapes.</p>
+  </div>
+
+  <div class="social-grid">
+
+    <!-- Announcement Card -->
+    <div class="social-card" style="background:var(--blush-warm);">
+      <div class="sc-bg"></div>
+      <div class="sc-pool" style="width:200px;height:200px;background:var(--pool-petal);top:-30%;left:-20%;opacity:0.5;"></div>
+      <div class="sc-pool" style="width:150px;height:150px;background:var(--pool-mauve);bottom:-15%;right:-15%;opacity:0.35;"></div>
+      <div class="sc-content">
+        <p class="sc-eyebrow" style="color:var(--mauve-text);">Workshop · April 19</p>
+        <p class="sc-title" style="color:var(--ink-warm);">Beauty and<br>the <em style="font-style:italic;color:var(--rose-cta);">Skin</em></p>
+        <p class="sc-date" style="color:var(--sage-text);">Dara Pressley · Julie Moody-Freeman · Ericka Mabrie</p>
+        <p class="sc-handle" style="color:var(--mauve-text);">REGISTER AT THEROOTEDWISDOM.COM</p>
+      </div>
+    </div>
+
+    <!-- Quote Card -->
+    <div class="social-card" style="background:var(--bark-rose);">
+      <div class="sc-pool" style="width:180px;height:180px;background:#8a3040;top:-20%;right:-10%;opacity:0.6;"></div>
+      <div class="sc-pool" style="width:150px;height:120px;background:var(--pool-petal);bottom:10%;left:-10%;opacity:0.12;"></div>
+      <div class="sc-content">
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.9rem,3.5vw,1.4rem);font-style:italic;font-weight:300;color:var(--on-dark-primary);line-height:1.35;margin-bottom:0.8rem;">"Beauty ritual is not indulgence.<br>It is remembering."</p>
+        <p class="sc-date" style="color:var(--on-dark-mid);">Bloom &amp; Tend · April 19</p>
+        <p class="sc-handle" style="color:rgba(247,237,232,0.65);">@therootedwisdom</p>
+      </div>
+    </div>
+
+    <!-- Detail Card -->
+    <div class="social-card" style="background:var(--cream-white);">
+      <div class="sc-pool" style="width:200px;height:160px;background:var(--pool-mauve);top:-15%;right:-10%;opacity:0.25;"></div>
+      <div class="sc-pool" style="width:150px;height:150px;background:var(--pool-blush);bottom:-10%;left:-5%;opacity:0.3;"></div>
+      <div class="sc-content">
+        <p class="sc-eyebrow" style="color:var(--mauve-text);">What we'll explore</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.8rem,3vw,1.1rem);color:var(--ink-warm);line-height:1.4;margin:0.4rem 0;">Healing skin conditions<br>Healing through the skin<br>Healing the spirit<br>through the skin</p>
+        <p class="sc-date" style="color:var(--rose-cta);margin-top:0.6rem;">JOIN US · APRIL 19</p>
+        <p class="sc-handle" style="color:var(--sage-text);">therootedwisdom.com</p>
+      </div>
+    </div>
+
+    <!-- Story-format tall card -->
+    <div class="social-card" style="background:var(--blush-deep);aspect-ratio:9/16;max-height:420px;">
+      <div class="sc-pool" style="width:200px;height:200px;background:var(--pool-petal);top:-5%;right:-20%;opacity:0.4;"></div>
+      <div class="sc-pool" style="width:180px;height:180px;background:var(--pool-mauve);bottom:10%;left:-15%;opacity:0.3;"></div>
+      <div class="sc-content" style="padding:2rem 1.5rem;">
+        <p class="sc-eyebrow" style="color:var(--mauve-text);margin-bottom:1rem;">Your guides for this workshop</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,4vw,1.5rem);color:var(--ink-warm);font-weight:400;line-height:1.2;margin-bottom:0.3rem;">Dara Pressley</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.7rem,2.5vw,0.95rem);color:var(--rose-text);font-style:italic;line-height:1.4;margin-bottom:1rem;">Herbalist, ancestral practitioner,<br>founder of The Rooted Wisdom</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,4vw,1.5rem);color:var(--ink-warm);font-weight:400;line-height:1.2;margin-bottom:0.3rem;">Julie Moody-Freeman</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.7rem,2.5vw,0.95rem);color:var(--rose-text);font-style:italic;line-height:1.4;margin-bottom:1rem;">Co-presenter</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,4vw,1.5rem);color:var(--ink-warm);font-weight:400;line-height:1.2;margin-bottom:0.3rem;">Ericka Mabrie</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(0.7rem,2.5vw,0.95rem);color:var(--rose-text);font-style:italic;line-height:1.4;margin-bottom:1.5rem;">Co-presenter</p>
+        <p style="font-size:clamp(0.55rem,1.5vw,0.65rem);letter-spacing:0.22em;text-transform:uppercase;color:var(--rose-cta);">Register · therootedwisdom.com</p>
+      </div>
+    </div>
+
+    <!-- Botanical texture card -->
+    <div class="social-card" style="background:var(--blush-parchment);">
+      <div class="sc-pool" style="width:250px;height:200px;background:var(--pool-petal);top:-20%;left:-20%;opacity:0.45;"></div>
+      <div class="sc-pool" style="width:180px;height:180px;background:var(--pool-mauve);bottom:-15%;right:-10%;opacity:0.28;"></div>
+      <div class="sc-content">
+        <p class="sc-eyebrow" style="color:var(--sage-text);">A three-voice workshop</p>
+        <p class="sc-title" style="color:var(--ink-warm);">Skin as a<br><em style="font-style:italic;color:var(--rose-cta);">living record.</em></p>
+        <p style="font-size:clamp(0.58rem,1.8vw,0.72rem);color:var(--rose-text);margin-top:0.5rem;line-height:1.6;">Beauty as practice. Herbs as medicine.<br>Spirit tended through the body.</p>
+        <p class="sc-handle" style="color:var(--mauve-text);margin-top:0.6rem;">@therootedwisdom</p>
+      </div>
+    </div>
+
+    <!-- Countdown/reminder card -->
+    <div class="social-card" style="background:var(--blush-warm);">
+      <div class="sc-pool" style="width:200px;height:200px;background:var(--pool-mauve);top:-20%;right:-10%;opacity:0.3;"></div>
+      <div class="sc-pool" style="width:150px;height:150px;background:#b0b898;bottom:-10%;left:-10%;opacity:0.25;"></div>
+      <div class="sc-content">
+        <p class="sc-eyebrow" style="color:var(--mauve-text);">Coming up</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,7vw,3.5rem);font-weight:300;color:var(--rose-cta);line-height:0.9;margin-bottom:0.2rem;">April<br><strong style="font-weight:600;">19</strong></p>
+        <p class="sc-title" style="color:var(--ink-warm);font-size:clamp(0.85rem,3.5vw,1.1rem);">Beauty and the Skin</p>
+        <p class="sc-date" style="color:var(--sage-text);">12pm PT · Virtual</p>
+        <p class="sc-handle" style="color:var(--rose-text);">therootedwisdom.com</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     06 · SIGNUP PAGE MOCKUP
+══════════════════════════════════════ -->
+<section class="sg-section">
+  <div class="section-pool" style="width:450px;height:350px;background:var(--pool-mauve);top:-10%;left:-10%;"></div>
+
+  <div class="sg-section-header">
+    <p class="sg-section-num">06 · Workshop Landing Page</p>
+    <h2 class="sg-section-title">Signup Page Concept</h2>
+    <p class="sg-section-desc">The workshop landing page extends the main site's structure but wraps entirely in the blush palette. Hero pool colors shift to petal and mauve. The signup form sits in a cream-white field for contrast and clarity.</p>
+  </div>
+
+  <div class="signup-wrap">
+    <!-- HERO -->
+    <div class="signup-hero">
+      <div class="signup-hero-pool" style="width:700px;height:500px;background:var(--pool-petal);top:-30%;left:-15%;opacity:0.3;"></div>
+      <div class="signup-hero-pool" style="width:500px;height:400px;background:var(--pool-mauve);bottom:-20%;right:-10%;opacity:0.2;"></div>
+      <div class="signup-hero-content">
+        <p style="font-size:0.65rem;letter-spacing:0.42em;text-transform:uppercase;color:var(--mauve-text);margin-bottom:1.5rem;">The Rooted Wisdom · Workshop</p>
+        <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:400;color:var(--ink-warm);line-height:1.05;margin-bottom:0.2em;">Beauty and the Skin</h1>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;font-weight:300;color:var(--rose-cta);">The Medicinal and Spiritual Properties of Herbs</p>
+        <div style="display:flex;align-items:center;justify-content:center;gap:1rem;margin:1.5rem 0;">
+          <div style="height:1px;width:80px;background:linear-gradient(to right,transparent,rgba(106,56,72,0.3),transparent);"></div>
+          <div style="width:5px;height:5px;background:var(--mauve-text);transform:rotate(45deg);"></div>
+          <div style="height:1px;width:80px;background:linear-gradient(to right,transparent,rgba(106,56,72,0.3),transparent);"></div>
+        </div>
+        <p style="font-size:0.7rem;letter-spacing:0.26em;text-transform:uppercase;color:var(--mauve-text);margin-bottom:0.4rem;">Presented by</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--rose-text);">Dara Pressley · Julie Moody-Freeman · Ericka Mabrie</p>
+        <p style="font-size:0.68rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--sage-text);margin-top:0.8rem;">Saturday, April 19, 2026 · 12pm PT · Virtual</p>
+      </div>
+    </div>
+
+    <!-- BODY: Details + Form -->
+    <div class="signup-body">
+      <div>
+        <p style="font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--mauve-text);margin-bottom:1.5rem;">About This Workshop</p>
+        <p class="signup-detail" style="margin-bottom:1rem;">Beauty as a practice, not a performance. Skin as a living record. Julie and Ericka bring their own depth to this dialogue, and together we'll explore what it means to tend to ourselves from the inside out.</p>
+        <p class="signup-detail" style="margin-bottom:1.5rem;">This is a workshop in the medicinal and spiritual properties of herbs as they relate to the skin — how we heal it, how we heal through it, and how we use it to tend the spirit.</p>
+        <p style="font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--mauve-text);margin-bottom:1rem;">Three Conversations</p>
+        <ul style="list-style:none;">
+          <li style="font-size:0.85rem;color:var(--rose-text);padding-left:1.2rem;position:relative;line-height:1.9;"><span style="position:absolute;left:0;color:var(--mauve-decor);">◈</span>Healing skin conditions — what the skin expresses and how herbs respond</li>
+          <li style="font-size:0.85rem;color:var(--rose-text);padding-left:1.2rem;position:relative;line-height:1.9;"><span style="position:absolute;left:0;color:var(--mauve-decor);">◈</span>Healing through the skin — muscle aches, cramps, and topical medicine</li>
+          <li style="font-size:0.85rem;color:var(--rose-text);padding-left:1.2rem;position:relative;line-height:1.9;"><span style="position:absolute;left:0;color:var(--mauve-decor);">◈</span>Healing the spirit through the skin — ritual, touch, and the body as sacred ground</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--mauve-text);margin-bottom:1.5rem;">Reserve Your Seat</p>
+        <input class="signup-input" type="text" placeholder="Your name" readonly/>
+        <input class="signup-input" type="email" placeholder="Email address" readonly/>
+        <input class="signup-input" type="text" placeholder="How did you hear about this workshop?" readonly/>
+        <button class="signup-btn">Register for Beauty and the Skin</button>
+        <p class="signup-note">Saturday, April 19 · 12pm PT · Virtual</p>
+        <p class="signup-note" style="margin-top:0.3rem;">Dara Pressley · Julie Moody-Freeman · Ericka Mabrie</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     07 · USAGE NOTES
+══════════════════════════════════════ -->
+<section class="sg-section">
+  <div class="sg-section-header">
+    <p class="sg-section-num">07 · Usage Notes</p>
+    <h2 class="sg-section-title">How to Apply This System</h2>
+    <p class="sg-section-desc">This campaign palette is a sub-expression of the main Rooted Wisdom identity. It inherits the typographic system and spatial rules entirely — only the colors shift. When in doubt, let the main brand guide lead; this guide handles only the workshop-specific overrides.</p>
+  </div>
+
+  <div class="usage-grid">
+    <div class="usage-card">
+      <p class="usage-card-title">What Carries Over from Main Brand</p>
+      <ul>
+        <li>Cormorant Garamond + Jost typefaces</li>
+        <li>Eyebrow tracking (0.38–0.42em)</li>
+        <li>Diamond ◈ ornament</li>
+        <li>Watercolor pool blur technique</li>
+        <li>Paper grain texture overlay</li>
+        <li>Spacing and section structure</li>
+        <li>3px border-radius on cards</li>
+      </ul>
+    </div>
+    <div class="usage-card">
+      <p class="usage-card-title">What Changes for This Campaign</p>
+      <ul>
+        <li>Background: parchment → blush parchment</li>
+        <li>Pool fills: blue tones → petal + mauve</li>
+        <li>CTA color: rust → rose</li>
+        <li>Eyebrow color: blue-wc3 → mauve</li>
+        <li>Display italic: rust → rose</li>
+        <li>Footer bg: bark → bark-rose</li>
+        <li>Body text: mid-text → mid-rose</li>
+      </ul>
+    </div>
+    <div class="usage-card">
+      <p class="usage-card-title">Presenter Credit Rule</p>
+      <p>Dara, Julie, and Ericka share equal visual weight in all materials. Always list all three names. The preferred order is Dara Pressley · Julie · Ericka. On social media, condense to @handles when format requires. Never lead with just one name on campaign-facing materials.</p>
+    </div>
+    <div class="usage-card">
+      <p class="usage-card-title">CTA Language</p>
+      <ul>
+        <li>Register for Bloom & Tend</li>
+        <li>Reserve Your Seat</li>
+        <li>Join Us · April 19</li>
+        <li>Register at therootedwisdom.com</li>
+      </ul>
+      <p style="margin-top:0.8rem;">Plain uppercase text, not button pills, for social. Standard button styling on web.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     08 · DESIGN TOKENS
+══════════════════════════════════════ -->
+<section class="sg-section" style="border-bottom:none;">
+  <div class="sg-section-header">
+    <p class="sg-section-num">08 · Design Tokens</p>
+    <h2 class="sg-section-title">CSS & Slide Variables</h2>
+    <p class="sg-section-desc">Copy these into the workshop page SCSS partial or into a slide master. All other spacing, type, and motion tokens inherit from the main <code style="font-size:0.82rem;background:rgba(184,120,138,0.12);padding:0.1em 0.4em;border-radius:2px;">styles.scss</code>.</p>
+  </div>
+
+  <table class="token-table">
+    <thead><tr><th>Variable</th><th>Value</th><th>Use</th></tr></thead>
+    <tbody>
+      <tr class="token-section-row"><td colspan="3">— Backgrounds —</td></tr>
+      <tr><td>--blush-parchment</td><td>#f7ede8</td><td>Primary bg (replaces --parchment)</td></tr>
+      <tr><td>--blush-warm</td><td>#f2ddd4</td><td>Alt section bg (replaces --parchment2)</td></tr>
+      <tr><td>--blush-deep</td><td>#e8c9bc</td><td>Accent section bg (replaces --parchment3)</td></tr>
+      <tr><td>--cream-white</td><td>#fdf6f2</td><td>Card / form backgrounds</td></tr>
+      <tr><td>--bark-rose</td><td>#5c3030</td><td>Footer / dark field (replaces --bark)</td></tr>
+      <tr class="token-section-row"><td colspan="3">— Accents —</td></tr>
+      <tr><td>--rose</td><td>#c8614a</td><td>Primary CTA, links (replaces --rust)</td></tr>
+      <tr><td>--rose-dark</td><td>#a84030</td><td>Hover state (replaces --rust-light hover)</td></tr>
+      <tr><td>--rose-light</td><td>#e0896e</td><td>Soft highlights</td></tr>
+      <tr><td>--mauve</td><td>#b8788a</td><td>Eyebrows, labels (replaces --blue-wc3)</td></tr>
+      <tr><td>--mauve-light</td><td>#d4a0b0</td><td>Borders (replaces --blue-wc2)</td></tr>
+      <tr><td>--petal</td><td>#e8a898</td><td>Ornaments, diamond fills</td></tr>
+      <tr><td>--petal-light</td><td>#f0c4b8</td><td>Pool fill, light accents</td></tr>
+      <tr><td>--blush-sage</td><td>#8a9078</td><td>Captions, metadata</td></tr>
+      <tr class="token-section-row"><td colspan="3">— Watercolor Pool Fills —</td></tr>
+      <tr><td>--pool-petal</td><td>#e8a898</td><td>Pool fill — warm petal (replaces --blue-wc)</td></tr>
+      <tr><td>--pool-mauve</td><td>#b8788a</td><td>Pool fill — mauve (replaces --amber-wc)</td></tr>
+      <tr><td>--pool-blush</td><td>#f0c4b8</td><td>Pool fill — light blush</td></tr>
+      <tr class="token-section-row"><td colspan="3">— Text —</td></tr>
+      <tr><td>--ink-warm</td><td>#2e1818</td><td>Primary text (replaces --ink-text)</td></tr>
+      <tr><td>--mid-rose</td><td>#7a3a38</td><td>Body copy (replaces --mid-text)</td></tr>
+      <tr><td>--soft-rose</td><td>#a86858</td><td>Captions (replaces --soft-text)</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</div>
+
+<!-- FOOTER -->
+<div class="sg-footer">
+  <p class="sg-footer-title">Beauty and the Skin</p>
+  <p class="sg-footer-sub">The Medicinal and Spiritual Properties of Herbs · The Rooted Wisdom</p>
+  <p class="sg-footer-note">Dara Pressley · Julie Moody-Freeman · Ericka Mabrie · April 19, 2026 · therootedwisdom.com</p>
+</div>
+
+</body>
+</html>

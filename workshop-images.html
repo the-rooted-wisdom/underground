@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Beauty and the Skin — Campaign Images</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blush-parchment:  #f7ede8;
+      --blush-warm:       #f2ddd4;
+      --blush-deep:       #e8c9bc;
+      --cream-white:      #fdf6f2;
+      --bark-rose:        #4a2020;
+      --ink-warm:         #2a1414;
+      --rose-text:        #7a2818;
+      --mauve-text:       #6a3848;
+      --sage-text:        #4a5438;
+      --rose-cta:         #a84030;
+      --on-dark-primary:  #f7ede8;
+      --on-dark-mid:      #e8c9bc;
+    }
+
+    body {
+      font-family: "Jost", sans-serif;
+      background: #e8e0d8;
+      padding: 3rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .label {
+      font-family: "Jost", sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #6a5a50;
+      margin-bottom: 0.8rem;
+      text-align: center;
+    }
+
+    /* ═══════════════════════════════════════
+       VERSION 1 — EMAIL HEADER 600×300
+    ═══════════════════════════════════════ */
+    .email-banner {
+      width: 600px;
+      height: 300px;
+      background: var(--blush-parchment);
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    /* Watercolor pools */
+    .pool { position: absolute; border-radius: 50%; filter: blur(70px); pointer-events: none; }
+
+    /* Banner pools */
+    .b-p1 { width: 380px; height: 320px; background: #e8a898; top: -30%; left: -8%;  opacity: 0.28; }
+    .b-p2 { width: 300px; height: 280px; background: #c898a8; bottom: -25%; right: -5%; opacity: 0.22; }
+    .b-p3 { width: 220px; height: 180px; background: #f0c4b8; top: 10%; right: 15%;  opacity: 0.18; }
+    .b-p4 { width: 180px; height: 160px; background: #a8b090; bottom: 5%; left: 20%; opacity: 0.12; }
+
+    /* Botanical SVG layer */
+    .banner-botanical {
+      position: absolute;
+      right: -10px; bottom: -20px;
+      width: 260px; height: 260px;
+      opacity: 0.12;
+    }
+
+    /* Grain texture */
+    .grain {
+      position: absolute; inset: 0; pointer-events: none;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px;
+    }
+
+    /* Left edge accent bar */
+    .banner-bar {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, transparent, var(--rose-cta), transparent);
+    }
+
+    /* Banner content */
+    .banner-content {
+      position: absolute; inset: 0; z-index: 2;
+      display: flex; flex-direction: column;
+      justify-content: center;
+      padding: 0 3rem 0 2.8rem;
+    }
+
+    .b-eyebrow {
+      font-size: 0.55rem;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      color: var(--mauve-text);
+      margin-bottom: 0.7rem;
+    }
+
+    .b-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2.9rem;
+      font-weight: 400;
+      color: var(--ink-warm);
+      line-height: 0.95;
+      margin-bottom: 0.2em;
+    }
+    .b-title em {
+      font-style: italic;
+      color: var(--rose-cta);
+    }
+
+    .b-subtitle {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 0.95rem;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--rose-text);
+      margin-bottom: 1.4rem;
+      max-width: 34ch;
+      line-height: 1.4;
+    }
+
+    .b-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    .b-meta {
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sage-text);
+    }
+    .b-meta-dot {
+      width: 3px; height: 3px;
+      background: var(--mauve-text);
+      border-radius: 50%;
+      opacity: 0.5;
+    }
+
+    .b-orn {
+      display: flex; align-items: center; gap: 0.6rem;
+      margin: 0.9rem 0;
+    }
+    .b-orn-line {
+      width: 48px; height: 1px;
+      background: linear-gradient(to right, rgba(106,56,72,0.3), transparent);
+    }
+    .b-orn-dia {
+      width: 4px; height: 4px;
+      background: var(--mauve-text);
+      transform: rotate(45deg);
+    }
+
+    .b-presenters {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 0.82rem;
+      font-style: italic;
+      color: var(--rose-text);
+    }
+
+    /* Logo mark bottom right */
+    .b-logo {
+      position: absolute;
+      bottom: 1.4rem; right: 2rem;
+      z-index: 2;
+      text-align: right;
+    }
+    .b-logo-name {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 0.78rem;
+      font-style: italic;
+      color: var(--mauve-text);
+      display: block;
+    }
+    .b-logo-url {
+      font-size: 0.52rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sage-text);
+      display: block;
+      margin-top: 0.15rem;
+    }
+
+
+    /* ═══════════════════════════════════════
+       VERSION 2 — SQUARE 600×600
+    ═══════════════════════════════════════ */
+    .square-card {
+      width: 600px;
+      height: 600px;
+      background: var(--blush-parchment);
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    /* Square pools — larger, softer */
+    .s-p1 { width: 500px; height: 460px; background: #e8a898; top: -15%; left: -12%;  opacity: 0.24; }
+    .s-p2 { width: 420px; height: 380px; background: #c898a8; bottom: -18%; right: -10%; opacity: 0.20; }
+    .s-p3 { width: 300px; height: 280px; background: #f0c4b8; top: 25%; right: 5%;    opacity: 0.15; }
+    .s-p4 { width: 240px; height: 200px; background: #a8b090; bottom: 20%; left: 8%;  opacity: 0.10; }
+
+    .square-botanical {
+      position: absolute;
+      right: -20px; bottom: -30px;
+      width: 380px; height: 380px;
+      opacity: 0.10;
+    }
+
+    /* Top rule */
+    .sq-top-rule {
+      position: absolute;
+      top: 2.8rem; left: 3rem; right: 3rem;
+      height: 1px;
+      background: linear-gradient(to right, var(--rose-cta), rgba(168,64,48,0.15), transparent);
+      z-index: 2;
+    }
+
+    /* Bottom rule */
+    .sq-bottom-rule {
+      position: absolute;
+      bottom: 2.8rem; left: 3rem; right: 3rem;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(106,56,72,0.2), transparent);
+      z-index: 2;
+    }
+
+    .square-content {
+      position: absolute; inset: 0; z-index: 2;
+      display: flex; flex-direction: column;
+      justify-content: center;
+      padding: 4rem 3.5rem;
+    }
+
+    .sq-eyebrow {
+      font-size: 0.58rem;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: var(--mauve-text);
+      margin-bottom: 1.4rem;
+    }
+
+    .sq-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 4.2rem;
+      font-weight: 400;
+      color: var(--ink-warm);
+      line-height: 0.92;
+      margin-bottom: 0.15em;
+    }
+    .sq-title em {
+      font-style: italic;
+      color: var(--rose-cta);
+      display: block;
+    }
+
+    .sq-subtitle {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--rose-text);
+      line-height: 1.4;
+      max-width: 32ch;
+      margin-bottom: 0.5rem;
+    }
+
+    .sq-orn {
+      display: flex; align-items: center; gap: 0.8rem;
+      margin: 1.6rem 0;
+    }
+    .sq-orn-line {
+      width: 60px; height: 1px;
+      background: linear-gradient(to right, rgba(106,56,72,0.3), transparent);
+    }
+    .sq-orn-dia {
+      width: 5px; height: 5px;
+      background: var(--mauve-text);
+      transform: rotate(45deg);
+    }
+
+    .sq-presenters {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--rose-text);
+      margin-bottom: 0.3rem;
+    }
+
+    .sq-meta-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      margin-top: 1.6rem;
+    }
+    .sq-meta {
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sage-text);
+    }
+
+    /* Bottom branding */
+    .sq-brand {
+      position: absolute;
+      bottom: 3.5rem; right: 3.5rem;
+      z-index: 2;
+      text-align: right;
+    }
+    .sq-brand-name {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 0.88rem;
+      font-style: italic;
+      color: var(--mauve-text);
+      display: block;
+    }
+    .sq-brand-url {
+      font-size: 0.52rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sage-text);
+      display: block;
+      margin-top: 0.2rem;
+    }
+
+    /* Corner accent marks */
+    .corner {
+      position: absolute; z-index: 2;
+      width: 16px; height: 16px;
+    }
+    .corner-tl { top: 1.6rem; left: 1.6rem; border-top: 1px solid rgba(168,64,48,0.4); border-left: 1px solid rgba(168,64,48,0.4); }
+    .corner-tr { top: 1.6rem; right: 1.6rem; border-top: 1px solid rgba(168,64,48,0.4); border-right: 1px solid rgba(168,64,48,0.4); }
+    .corner-bl { bottom: 1.6rem; left: 1.6rem; border-bottom: 1px solid rgba(106,56,72,0.25); border-left: 1px solid rgba(106,56,72,0.25); }
+    .corner-br { bottom: 1.6rem; right: 1.6rem; border-bottom: 1px solid rgba(106,56,72,0.25); border-right: 1px solid rgba(106,56,72,0.25); }
+
+  </style>
+</head>
+<body>
+
+  <!-- ── VERSION 1: EMAIL BANNER 600×300 ── -->
+  <div>
+    <p class="label">Version 1 — Email Header · 600 × 300px</p>
+    <div class="email-banner">
+
+      <!-- Pools -->
+      <div class="pool b-p1"></div>
+      <div class="pool b-p2"></div>
+      <div class="pool b-p3"></div>
+      <div class="pool b-p4"></div>
+
+      <!-- Botanical SVG -->
+      <svg class="banner-botanical" viewBox="0 0 260 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Main stem -->
+        <path d="M130 240 C128 200 125 160 130 100 C133 60 128 30 132 10" stroke="#7a2818" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- Left branch 1 -->
+        <path d="M129 160 C110 155 90 148 75 138" stroke="#7a2818" stroke-width="1" stroke-linecap="round"/>
+        <ellipse cx="62" cy="132" rx="16" ry="9" fill="#7a2818" transform="rotate(-20,62,132)" opacity="0.6"/>
+        <ellipse cx="85" cy="140" rx="12" ry="7" fill="#7a2818" transform="rotate(-15,85,140)" opacity="0.5"/>
+        <!-- Right branch 1 -->
+        <path d="M131 145 C148 138 164 130 178 118" stroke="#7a2818" stroke-width="1" stroke-linecap="round"/>
+        <ellipse cx="188" cy="113" rx="15" ry="8" fill="#7a2818" transform="rotate(20,188,113)" opacity="0.6"/>
+        <ellipse cx="170" cy="122" rx="11" ry="6" fill="#7a2818" transform="rotate(15,170,122)" opacity="0.5"/>
+        <!-- Left branch 2 -->
+        <path d="M130 115 C114 108 98 98 84 86" stroke="#7a2818" stroke-width="1" stroke-linecap="round"/>
+        <ellipse cx="74" cy="80" rx="14" ry="8" fill="#7a2818" transform="rotate(-25,74,80)" opacity="0.55"/>
+        <!-- Right branch 2 -->
+        <path d="M131 100 C146 92 160 82 172 70" stroke="#7a2818" stroke-width="1" stroke-linecap="round"/>
+        <ellipse cx="180" cy="64" rx="13" ry="7" fill="#7a2818" transform="rotate(22,180,64)" opacity="0.55"/>
+        <!-- Top leaves -->
+        <ellipse cx="128" cy="48" rx="10" ry="18" fill="#7a2818" transform="rotate(-5,128,48)" opacity="0.5"/>
+        <ellipse cx="135" cy="30" rx="7" ry="13" fill="#7a2818" transform="rotate(8,135,30)" opacity="0.4"/>
+        <!-- Small flower -->
+        <circle cx="130" cy="10" r="4" fill="#c8614a" opacity="0.5"/>
+        <circle cx="130" cy="10" r="2" fill="#7a2818" opacity="0.6"/>
+        <!-- Leaf veins -->
+        <path d="M62 132 C62 126 62 120" stroke="#f7ede8" stroke-width="0.5" opacity="0.4"/>
+        <path d="M188 113 C188 107 188 101" stroke="#f7ede8" stroke-width="0.5" opacity="0.4"/>
+      </svg>
+
+      <!-- Grain -->
+      <div class="grain"></div>
+      <!-- Left bar -->
+      <div class="banner-bar"></div>
+
+      <!-- Content -->
+      <div class="banner-content">
+        <p class="b-eyebrow">The Rooted Wisdom · Workshop</p>
+        <h1 class="b-title">Beauty and<br>the <em>Skin</em></h1>
+        <p class="b-subtitle">The Medicinal and Spiritual Properties of Herbs</p>
+        <div class="b-orn">
+          <div class="b-orn-line"></div>
+          <div class="b-orn-dia"></div>
+        </div>
+        <div class="b-meta-row">
+          <span class="b-meta">April 19, 2026</span>
+          <div class="b-meta-dot"></div>
+          <span class="b-meta">12pm PT</span>
+          <div class="b-meta-dot"></div>
+          <span class="b-meta">Virtual</span>
+        </div>
+        <p class="b-presenters" style="margin-top:0.6rem;">Dara Pressley · Julie Moody-Freeman · Ericka Mabrie</p>
+      </div>
+
+      <!-- Logo -->
+      <div class="b-logo">
+        <span class="b-logo-name">The Rooted Wisdom</span>
+        <span class="b-logo-url">therootedwisdom.com</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── VERSION 2: SQUARE 600×600 ── -->
+  <div>
+    <p class="label">Version 2 — Square · 600 × 600px · Email &amp; Social</p>
+    <div class="square-card">
+
+      <!-- Pools -->
+      <div class="pool s-p1"></div>
+      <div class="pool s-p2"></div>
+      <div class="pool s-p3"></div>
+      <div class="pool s-p4"></div>
+
+      <!-- Botanical SVG -->
+      <svg class="square-botanical" viewBox="0 0 380 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M190 360 C188 300 184 230 190 150 C194 90 188 45 193 15" stroke="#7a2818" stroke-width="2" stroke-linecap="round"/>
+        <path d="M189 240 C162 232 136 218 112 202" stroke="#7a2818" stroke-width="1.2" stroke-linecap="round"/>
+        <ellipse cx="96" cy="194" rx="24" ry="13" fill="#7a2818" transform="rotate(-22,96,194)" opacity="0.55"/>
+        <ellipse cx="120" cy="205" rx="18" ry="10" fill="#7a2818" transform="rotate(-15,120,205)" opacity="0.45"/>
+        <path d="M191 215 C218 205 242 192 264 175" stroke="#7a2818" stroke-width="1.2" stroke-linecap="round"/>
+        <ellipse cx="278" cy="167" rx="22" ry="12" fill="#7a2818" transform="rotate(24,278,167)" opacity="0.55"/>
+        <ellipse cx="255" cy="178" rx="16" ry="9" fill="#7a2818" transform="rotate(16,255,178)" opacity="0.45"/>
+        <path d="M190 168 C166 158 144 144 124 128" stroke="#7a2818" stroke-width="1.2" stroke-linecap="round"/>
+        <ellipse cx="110" cy="120" rx="20" ry="11" fill="#7a2818" transform="rotate(-26,110,120)" opacity="0.5"/>
+        <path d="M191 148 C215 136 236 122 254 105" stroke="#7a2818" stroke-width="1.2" stroke-linecap="round"/>
+        <ellipse cx="266" cy="97" rx="19" ry="10" fill="#7a2818" transform="rotate(24,266,97)" opacity="0.5"/>
+        <path d="M190 110 C172 100 156 88 142 72" stroke="#7a2818" stroke-width="1" stroke-linecap="round"/>
+        <ellipse cx="132" cy="64" rx="15" ry="8" fill="#7a2818" transform="rotate(-28,132,64)" opacity="0.45"/>
+        <path d="M192 95 C210 84 226 70 238 54" stroke="#7a2818" stroke-width="1" stroke-linecap="round"/>
+        <ellipse cx="246" cy="46" rx="14" ry="8" fill="#7a2818" transform="rotate(25,246,46)" opacity="0.45"/>
+        <ellipse cx="189" cy="68" rx="14" ry="26" fill="#7a2818" transform="rotate(-4,189,68)" opacity="0.45"/>
+        <ellipse cx="194" cy="42" rx="10" ry="18" fill="#7a2818" transform="rotate(6,194,42)" opacity="0.38"/>
+        <circle cx="192" cy="15" r="6" fill="#c8614a" opacity="0.45"/>
+        <circle cx="192" cy="15" r="3" fill="#7a2818" opacity="0.55"/>
+        <!-- Small berries -->
+        <circle cx="96" cy="188" r="3" fill="#c8614a" opacity="0.4"/>
+        <circle cx="278" cy="161" r="3" fill="#c8614a" opacity="0.4"/>
+      </svg>
+
+      <!-- Grain -->
+      <div class="grain"></div>
+
+      <!-- Corner accents -->
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div>
+      <div class="corner corner-br"></div>
+
+      <!-- Top rule -->
+      <div class="sq-top-rule"></div>
+      <!-- Bottom rule -->
+      <div class="sq-bottom-rule"></div>
+
+      <!-- Content -->
+      <div class="square-content">
+        <p class="sq-eyebrow">The Rooted Wisdom · Workshop Series</p>
+        <h1 class="sq-title">
+          Beauty and<br>
+          <em>the Skin</em>
+        </h1>
+        <p class="sq-subtitle">The Medicinal and Spiritual Properties of Herbs</p>
+
+        <div class="sq-orn">
+          <div class="sq-orn-line"></div>
+          <div class="sq-orn-dia"></div>
+        </div>
+
+        <p class="sq-presenters">Dara Pressley · Julie Moody-Freeman · Ericka Mabrie</p>
+
+        <div class="sq-meta-stack">
+          <span class="sq-meta">Saturday, April 19, 2026</span>
+          <span class="sq-meta">12pm Pacific · Virtual</span>
+        </div>
+      </div>
+
+      <!-- Brand -->
+      <div class="sq-brand">
+        <span class="sq-brand-name">The Rooted Wisdom</span>
+        <span class="sq-brand-url">therootedwisdom.com</span>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
