@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Beauty and the Skin — Social Graphics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blush-parchment:  #f7ede8;
+      --blush-warm:       #f2ddd4;
+      --blush-deep:       #e8c9bc;
+      --cream-white:      #fdf6f2;
+      --bark-rose:        #4a2020;
+      --ink-warm:         #2a1414;
+      --rose-text:        #7a2818;
+      --mauve-text:       #6a3848;
+      --sage-text:        #4a5438;
+      --rose-cta:         #a84030;
+      --on-dark-primary:  #f7ede8;
+      --on-dark-mid:      #e8c9bc;
+      --pool-petal:       #e8a898;
+      --pool-mauve:       #c898a8;
+      --pool-blush:       #f0c4b8;
+    }
+
+    body {
+      font-family: "Jost", sans-serif;
+      background: #d8d0c8;
+      padding: 3rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4rem;
+    }
+
+    /* ── PAGE LABELS ── */
+    .card-label {
+      font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: #6a5a50; margin-bottom: 0.8rem; text-align: center;
+    }
+    .card-wrap { display: flex; flex-direction: column; align-items: center; }
+
+    /* ── BASE CARD ── */
+    .card {
+      width: 540px; height: 540px;
+      position: relative; overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    /* Shared pools */
+    .pool { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; }
+
+    /* Corner marks */
+    .corner { position: absolute; z-index: 4; width: 14px; height: 14px; }
+    .c-tl { top: 1.4rem; left: 1.4rem; border-top: 1px solid rgba(168,64,48,0.5); border-left: 1px solid rgba(168,64,48,0.5); }
+    .c-tr { top: 1.4rem; right: 1.4rem; border-top: 1px solid rgba(168,64,48,0.5); border-right: 1px solid rgba(168,64,48,0.5); }
+    .c-bl { bottom: 1.4rem; left: 1.4rem; border-bottom: 1px solid rgba(106,56,72,0.3); border-left: 1px solid rgba(106,56,72,0.3); }
+    .c-br { bottom: 1.4rem; right: 1.4rem; border-bottom: 1px solid rgba(106,56,72,0.3); border-right: 1px solid rgba(106,56,72,0.3); }
+
+    /* Dark corner marks */
+    .c-tl-d { top: 1.4rem; left: 1.4rem; border-top: 1px solid rgba(247,237,232,0.3); border-left: 1px solid rgba(247,237,232,0.3); }
+    .c-tr-d { top: 1.4rem; right: 1.4rem; border-top: 1px solid rgba(247,237,232,0.3); border-right: 1px solid rgba(247,237,232,0.3); }
+    .c-bl-d { bottom: 1.4rem; left: 1.4rem; border-bottom: 1px solid rgba(247,237,232,0.2); border-left: 1px solid rgba(247,237,232,0.2); }
+    .c-br-d { bottom: 1.4rem; right: 1.4rem; border-bottom: 1px solid rgba(247,237,232,0.2); border-right: 1px solid rgba(247,237,232,0.2); }
+
+    /* Ornament */
+    .orn { display: flex; align-items: center; gap: 0.7rem; }
+    .orn-line { height: 1px; width: 40px; background: linear-gradient(to right, rgba(106,56,72,0.3), transparent); }
+    .orn-line-d { height: 1px; width: 40px; background: linear-gradient(to right, rgba(247,237,232,0.4), transparent); }
+    .orn-dia { width: 4px; height: 4px; transform: rotate(45deg); background: var(--mauve-text); flex-shrink: 0; }
+    .orn-dia-d { width: 4px; height: 4px; transform: rotate(45deg); background: var(--on-dark-mid); flex-shrink: 0; }
+
+
+    /* ══════════════════════════════════
+       CARD 1 — ANNOUNCEMENT
+    ══════════════════════════════════ */
+    .announce {
+      background: var(--blush-parchment);
+    }
+    .announce .pool.p1 { width: 420px; height: 380px; background: var(--pool-petal);  top:-20%; left:-15%;  opacity:0.15; }
+    .announce .pool.p2 { width: 360px; height: 320px; background: var(--pool-mauve); bottom:-18%; right:-12%; opacity:0.12; }
+    .announce .pool.p3 { width: 260px; height: 220px; background: var(--pool-blush); top:30%; right:5%;   opacity:0.09; }
+
+    .announce-content {
+      position: absolute; inset: 0; z-index: 2;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center; padding: 3rem;
+    }
+    .announce-eyebrow {
+      font-size: 0.55rem; letter-spacing: 0.42em; text-transform: uppercase;
+      color: var(--mauve-text); margin-bottom: 1.4rem;
+    }
+    .announce-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 3.6rem; font-weight: 400;
+      color: var(--ink-warm); line-height: 0.92;
+      margin-bottom: 0.15em;
+    }
+    .announce-title em { font-style: italic; color: var(--rose-cta); display: block; }
+    .announce-subtitle {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 0.92rem; font-style: italic; font-weight: 300;
+      color: var(--rose-text); margin-top: 0.6rem;
+      line-height: 1.5; max-width: 28ch;
+    }
+    .announce-meta {
+      margin-top: 1.8rem; display: flex; flex-direction: column; gap: 0.3rem;
+    }
+    .announce-meta-line {
+      font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--sage-text);
+    }
+    .announce-presenters {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 0.88rem; font-style: italic;
+      color: var(--rose-text); margin-top: 0.2rem;
+    }
+    .announce-brand {
+      position: absolute; bottom: 2rem; right: 2.2rem; z-index: 3;
+      text-align: right;
+    }
+    .announce-brand span {
+      display: block; font-family: "Cormorant Garamond", serif;
+      font-size: 0.72rem; font-style: italic; color: var(--mauve-text);
+    }
+
+
+    /* ══════════════════════════════════
+       PILLAR CARDS — shared base
+    ══════════════════════════════════ */
+    .pillar-card { background: var(--blush-warm); }
+
+    .pillar-num-bg {
+      position: absolute; z-index: 1;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 18rem; font-weight: 400; font-style: italic;
+      color: rgba(168,64,48,0.06);
+      line-height: 1; right: -1rem; bottom: -2rem;
+      pointer-events: none; user-select: none;
+    }
+
+    .pillar-content {
+      position: absolute; inset: 0; z-index: 3;
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      padding: 2.8rem;
+    }
+    .pillar-series {
+      font-size: 0.55rem; letter-spacing: 0.38em; text-transform: uppercase;
+      color: var(--mauve-text); margin-bottom: 0.6rem;
+    }
+    .pillar-num {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.6rem; font-style: italic; font-weight: 300;
+      color: var(--rose-cta); line-height: 1; margin-bottom: 0.5rem;
+    }
+    .pillar-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2.4rem; font-weight: 400;
+      color: var(--ink-warm); line-height: 1.0;
+      margin-bottom: 1rem;
+    }
+    .pillar-body {
+      font-size: 0.8rem; color: var(--rose-text);
+      line-height: 1.75; max-width: 36ch;
+      margin-bottom: 1.4rem;
+    }
+    .pillar-footer {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .pillar-workshop {
+      font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--sage-text);
+    }
+    .pillar-brand {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 0.7rem; font-style: italic; color: var(--mauve-text);
+    }
+
+    /* Pillar-specific pool colors */
+    .pillar-1 .pool.p1 { width: 380px; height: 340px; background: var(--pool-petal);  top:-25%; right:-15%; opacity:0.18; }
+    .pillar-1 .pool.p2 { width: 280px; height: 240px; background: var(--pool-blush); bottom:-10%; left:-10%; opacity:0.12; }
+
+    .pillar-2 .pool.p1 { width: 360px; height: 320px; background: var(--pool-mauve); top:-20%; left:-12%; opacity:0.16; }
+    .pillar-2 .pool.p2 { width: 280px; height: 260px; background: var(--pool-petal); bottom:-15%; right:-8%; opacity:0.12; }
+
+    .pillar-3 .pool.p1 { width: 400px; height: 360px; background: var(--pool-blush);  top:-20%; right:-10%; opacity:0.18; }
+    .pillar-3 .pool.p2 { width: 300px; height: 260px; background: var(--pool-mauve); bottom:-15%; left:-12%; opacity:0.14; }
+
+    /* Top accent rule on pillar cards */
+    .pillar-rule {
+      position: absolute; top: 0; left: 0; right: 0; z-index: 4;
+      height: 3px;
+    }
+    .pillar-1 .pillar-rule { background: linear-gradient(to right, var(--rose-cta), rgba(168,64,48,0.1), transparent); }
+    .pillar-2 .pillar-rule { background: linear-gradient(to right, var(--mauve-text), rgba(106,56,72,0.1), transparent); }
+    .pillar-3 .pillar-rule { background: linear-gradient(to right, var(--sage-text), rgba(74,84,56,0.1), transparent); }
+
+
+    /* ══════════════════════════════════
+       PRESENTER CARDS — photo forward
+    ══════════════════════════════════ */
+    .presenter-card { background: var(--blush-parchment); }
+
+    /* Photo takes top 58% */
+    .presenter-photo {
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 58%;
+      background: var(--blush-deep);
+      overflow: hidden; z-index: 1;
+    }
+    .presenter-photo-pool { position: absolute; border-radius: 50%; filter: blur(50px); }
+    .presenter-photo-label {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 0.5rem;
+    }
+    .photo-placeholder-icon {
+      width: 48px; height: 48px;
+      border: 1px solid rgba(106,56,72,0.3);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .photo-placeholder-text {
+      font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--mauve-text);
+    }
+
+    /* Fade from photo into info area */
+    .presenter-fade {
+      position: absolute; z-index: 2;
+      left: 0; right: 0;
+      height: 80px;
+      top: calc(58% - 80px);
+      background: linear-gradient(to bottom, transparent, var(--blush-parchment));
+    }
+
+    /* Info strip — bottom 42% */
+    .presenter-info {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 44%;
+      z-index: 3;
+      background: var(--blush-parchment);
+      padding: 1rem 2rem 1.8rem;
+      display: flex; flex-direction: column; justify-content: flex-end;
+    }
+    .presenter-role {
+      font-size: 0.55rem; letter-spacing: 0.32em; text-transform: uppercase;
+      color: var(--mauve-text); margin-bottom: 0.35rem;
+    }
+    .presenter-name {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2rem; font-weight: 400;
+      color: var(--ink-warm); line-height: 1.0;
+      margin-bottom: 0.6rem;
+    }
+    .presenter-line {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 0.88rem; font-style: italic; font-weight: 300;
+      color: var(--rose-text); line-height: 1.5;
+      max-width: 34ch;
+    }
+    .presenter-footer {
+      position: absolute; bottom: 1.6rem; right: 2rem; z-index: 4;
+      text-align: right;
+    }
+    .presenter-footer span {
+      display: block; font-size: 0.55rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--sage-text);
+    }
+
+    /* Presenter-specific photo pool colors */
+    .pres-dara .presenter-photo-pool.pp1   { width:300px; height:300px; background:var(--pool-petal);  top:-20%; left:-10%;  opacity:0.5; }
+    .pres-dara .presenter-photo-pool.pp2   { width:240px; height:220px; background:var(--pool-mauve); bottom:-15%; right:-10%; opacity:0.4; }
+    .pres-julie .presenter-photo-pool.pp1  { width:300px; height:280px; background:var(--pool-blush); top:-15%; right:-10%; opacity:0.5; }
+    .pres-julie .presenter-photo-pool.pp2  { width:240px; height:220px; background:var(--pool-petal); bottom:-15%; left:-10%; opacity:0.4; }
+    .pres-ericka .presenter-photo-pool.pp1 { width:300px; height:280px; background:var(--pool-mauve); top:-15%; left:-10%;  opacity:0.45; }
+    .pres-ericka .presenter-photo-pool.pp2 { width:240px; height:220px; background:var(--pool-blush); bottom:-15%; right:-10%; opacity:0.45; }
+
+
+    /* ══════════════════════════════════
+       COUNTDOWN CARD
+    ══════════════════════════════════ */
+    .countdown { background: var(--bark-rose); }
+    .countdown .pool.p1 { width:400px; height:360px; background:#6a2030; top:-20%; right:-15%; opacity:0.5; }
+    .countdown .pool.p2 { width:360px; height:320px; background:#3a1010; bottom:-20%; left:-12%; opacity:0.6; }
+    .countdown .pool.p3 { width:240px; height:200px; background:var(--pool-petal); top:20%; left:10%; opacity:0.08; }
+
+    .countdown-content {
+      position: absolute; inset: 0; z-index: 3;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center; padding: 3rem;
+    }
+    .countdown-eyebrow {
+      font-size: 0.55rem; letter-spacing: 0.42em; text-transform: uppercase;
+      color: var(--on-dark-mid); margin-bottom: 1.8rem;
+    }
+    .countdown-tomorrow {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 5.5rem; font-weight: 300; font-style: italic;
+      color: var(--on-dark-primary); line-height: 0.9;
+      margin-bottom: 0.2em;
+    }
+    .countdown-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.3rem; font-weight: 400;
+      color: var(--on-dark-mid); line-height: 1.2;
+      margin-bottom: 1.8rem; max-width: 24ch;
+    }
+    .countdown-orn {
+      display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.8rem;
+    }
+    .countdown-orn-line { height: 1px; width: 50px; background: rgba(247,237,232,0.25); }
+    .countdown-orn-dia  { width: 4px; height: 4px; transform: rotate(45deg); background: var(--on-dark-mid); }
+    .countdown-tiers {
+      display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 1.6rem;
+    }
+    .countdown-tier {
+      font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(247,237,232,0.7);
+    }
+    .countdown-cta {
+      font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--on-dark-primary);
+      border: 1px solid rgba(247,237,232,0.35);
+      padding: 0.6rem 1.6rem; border-radius: 2px;
+    }
+    .countdown-brand {
+      position: absolute; bottom: 2rem; z-index: 4;
+      text-align: center;
+    }
+    .countdown-brand span {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 0.72rem; font-style: italic;
+      color: rgba(247,237,232,0.45);
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════
+       CARD 1 — ANNOUNCEMENT
+  ══════════════════════════════════ -->
+  <div class="card-wrap">
+    <p class="card-label">01 · Announcement Card</p>
+    <div class="card announce">
+      <div class="pool p1"></div>
+      <div class="pool p2"></div>
+      <div class="pool p3"></div>
+      <div class="corner c-tl"></div>
+      <div class="corner c-tr"></div>
+      <div class="corner c-bl"></div>
+      <div class="corner c-br"></div>
+      <div class="announce-content">
+        <p class="announce-eyebrow">The Rooted Wisdom · Workshop Series</p>
+        <h1 class="announce-title">Beauty and<br><em>the Skin</em></h1>
+        <p class="announce-subtitle">The Medicinal and Spiritual Properties of Herbs</p>
+        <div class="orn" style="justify-content:center;margin:1.4rem auto;">
+          <div class="orn-line"></div>
+          <div class="orn-dia"></div>
+          <div class="orn-line" style="background:linear-gradient(to left,rgba(106,56,72,0.3),transparent);"></div>
+        </div>
+        <p class="announce-presenters">Dara Pressley · Julie Moody-Freeman · Ericka Mabrie</p>
+        <div class="announce-meta">
+          <span class="announce-meta-line">Saturday, April 19, 2026</span>
+          <span class="announce-meta-line">12pm PT · Virtual</span>
+        </div>
+      </div>
+      <div class="announce-brand">
+        <span>The Rooted Wisdom</span>
+        <span style="font-family:'Jost',sans-serif;font-style:normal;font-size:0.52rem;letter-spacing:0.18em;color:var(--sage-text);">therootedwisdom.com</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       CARD 2 — PILLAR I
+  ══════════════════════════════════ -->
+  <div class="card-wrap">
+    <p class="card-label">02 · Pillar I — Healing Skin Conditions</p>
+    <div class="card pillar-card pillar-1">
+      <div class="pillar-rule"></div>
+      <div class="pool p1"></div>
+      <div class="pool p2"></div>
+      <div class="corner c-tl"></div>
+      <div class="corner c-tr"></div>
+      <div class="corner c-bl"></div>
+      <div class="corner c-br"></div>
+      <div class="pillar-num-bg">I</div>
+      <div class="pillar-content">
+        <p class="pillar-series">Beauty and the Skin · Three Conversations</p>
+        <p class="pillar-num">I</p>
+        <h2 class="pillar-title">Healing<br>Skin Conditions</h2>
+        <p class="pillar-body">The skin speaks. Breakouts, dryness, inflammation — these are communications to understand, not problems to suppress. We'll work with the plants that have long known how to respond.</p>
+        <div class="pillar-footer">
+          <span class="pillar-workshop">April 19 · 12pm PT · Virtual</span>
+          <span class="pillar-brand">The Rooted Wisdom</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       CARD 3 — PILLAR II
+  ══════════════════════════════════ -->
+  <div class="card-wrap">
+    <p class="card-label">03 · Pillar II — Healing Through the Skin</p>
+    <div class="card pillar-card pillar-2">
+      <div class="pillar-rule"></div>
+      <div class="pool p1"></div>
+      <div class="pool p2"></div>
+      <div class="corner c-tl"></div>
+      <div class="corner c-tr"></div>
+      <div class="corner c-bl"></div>
+      <div class="corner c-br"></div>
+      <div class="pillar-num-bg">II</div>
+      <div class="pillar-content">
+        <p class="pillar-series">Beauty and the Skin · Three Conversations</p>
+        <p class="pillar-num">II</p>
+        <h2 class="pillar-title">Healing<br>Through the Skin</h2>
+        <p class="pillar-body">The skin is also a doorway in. Herbs applied topically can address muscle aches, cramps, and conditions that begin beneath the surface. What we put on the body doesn't stay there.</p>
+        <div class="pillar-footer">
+          <span class="pillar-workshop">April 19 · 12pm PT · Virtual</span>
+          <span class="pillar-brand">The Rooted Wisdom</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       CARD 4 — PILLAR III
+  ══════════════════════════════════ -->
+  <div class="card-wrap">
+    <p class="card-label">04 · Pillar III — Healing the Spirit Through the Skin</p>
+    <div class="card pillar-card pillar-3">
+      <div class="pillar-rule"></div>
+      <div class="pool p1"></div>
+      <div class="pool p2"></div>
+      <div class="corner c-tl"></div>
+      <div class="corner c-tr"></div>
+      <div class="corner c-bl"></div>
+      <div class="corner c-br"></div>
+      <div class="pillar-num-bg">III</div>
+      <div class="pillar-content">
+        <p class="pillar-series">Beauty and the Skin · Three Conversations</p>
+        <p class="pillar-num">III</p>
+        <h2 class="pillar-title">Healing the Spirit<br>Through the Skin</h2>
+        <p class="pillar-body">Touch is one of the oldest medicines. Tending the body has always been spiritual care — not separate from it. We'll explore what those ancestral practices hold and how to carry them forward.</p>
+        <div class="pillar-footer">
+          <span class="pillar-workshop">April 19 · 12pm PT · Virtual</span>
+          <span class="pillar-brand">The Rooted Wisdom</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       CARD 5 — PRESENTER: DARA
+  ══════════════════════════════════ -->
+  <div class="card-wrap">
+    <p class="card-label">05 · Presenter Card — Dara Pressley</p>
+    <div class="card presenter-card pres-dara">
+      <div class="presenter-photo">
+        <div class="presenter-photo-pool pp1"></div>
+        <div class="presenter-photo-pool pp2"></div>
+        <div class="presenter-photo-label">
+          <div class="photo-placeholder-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <circle cx="10" cy="7" r="3.5" stroke="#6a3848" stroke-width="1"/>
+              <path d="M3 17c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="#6a3848" stroke-width="1" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span class="photo-placeholder-text">Photo · Dara Pressley</span>
+        </div>
+      </div>
+      <div class="presenter-fade"></div>
+      <div class="corner c-tl"></div>
+      <div class="corner c-tr"></div>
+      <div class="corner c-bl"></div>
+      <div class="corner c-br"></div>
+      <div class="presenter-info">
+        <p class="presenter-role">Herbalist · Founder, The Rooted Wisdom</p>
+        <p class="presenter-name">Dara Pressley</p>
+        <p class="presenter-line">Ancestral practitioner and herbalist. She's been in relationship with plants and the body for years — and she's bringing all of it to April 19.</p>
+      </div>
+      <div class="presenter-footer">
+        <span>Beauty and the Skin</span>
+        <span style="margin-top:0.15rem;">April 19 · Virtual</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       CARD 6 — PRESENTER: JULIE
+  ══════════════════════════════════ -->
+  <div class="card-wrap">
+    <p class="card-label">06 · Presenter Card — Julie Moody-Freeman</p>
+    <div class="card presenter-card pres-julie">
+      <div class="presenter-photo">
+        <div class="presenter-photo-pool pp1"></div>
+        <div class="presenter-photo-pool pp2"></div>
+        <div class="presenter-photo-label">
+          <div class="photo-placeholder-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <circle cx="10" cy="7" r="3.5" stroke="#6a3848" stroke-width="1"/>
+              <path d="M3 17c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="#6a3848" stroke-width="1" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span class="photo-placeholder-text">Photo · Julie Moody-Freeman</span>
+        </div>
+      </div>
+      <div class="presenter-fade"></div>
+      <div class="corner c-tl"></div>
+      <div class="corner c-tr"></div>
+      <div class="corner c-bl"></div>
+      <div class="corner c-br"></div>
+      <div class="presenter-info">
+        <p class="presenter-role">Co-Presenter</p>
+        <p class="presenter-name">Julie Moody-Freeman</p>
+        <p class="presenter-line">She brings the understanding that caring for a body has always been spiritual work — the traditions of tending that belong to us and are more available than most of us were taught.</p>
+      </div>
+      <div class="presenter-footer">
+        <span>Beauty and the Skin</span>
+        <span style="margin-top:0.15rem;">April 19 · Virtual</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       CARD 7 — PRESENTER: ERICKA
+  ══════════════════════════════════ -->
+  <div class="card-wrap">
+    <p class="card-label">07 · Presenter Card — Ericka Mabrie</p>
+    <div class="card presenter-card pres-ericka">
+      <div class="presenter-photo">
+        <div class="presenter-photo-pool pp1"></div>
+        <div class="presenter-photo-pool pp2"></div>
+        <div class="presenter-photo-label">
+          <div class="photo-placeholder-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <circle cx="10" cy="7" r="3.5" stroke="#6a3848" stroke-width="1"/>
+              <path d="M3 17c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="#6a3848" stroke-width="1" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span class="photo-placeholder-text">Photo · Ericka Mabrie</span>
+        </div>
+      </div>
+      <div class="presenter-fade"></div>
+      <div class="corner c-tl"></div>
+      <div class="corner c-tr"></div>
+      <div class="corner c-bl"></div>
+      <div class="corner c-br"></div>
+      <div class="presenter-info">
+        <p class="presenter-role">Co-Presenter</p>
+        <p class="presenter-name">Ericka Mabrie</p>
+        <p class="presenter-line">She knows the body as a site of practice, not performance. Beauty as presence. Skin as something worth being in relationship with — not just managing.</p>
+      </div>
+      <div class="presenter-footer">
+        <span>Beauty and the Skin</span>
+        <span style="margin-top:0.15rem;">April 19 · Virtual</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       CARD 8 — COUNTDOWN
+  ══════════════════════════════════ -->
+  <div class="card-wrap">
+    <p class="card-label">08 · Countdown — Day Before</p>
+    <div class="card countdown">
+      <div class="pool p1"></div>
+      <div class="pool p2"></div>
+      <div class="pool p3"></div>
+      <div class="corner c-tl-d corner"></div>
+      <div class="corner c-tr-d corner"></div>
+      <div class="corner c-bl-d corner"></div>
+      <div class="corner c-br-d corner"></div>
+      <div class="countdown-content">
+        <p class="countdown-eyebrow">The Rooted Wisdom · Workshop</p>
+        <p class="countdown-tomorrow">Tomorrow.</p>
+        <p class="countdown-title">Beauty and the Skin</p>
+        <div class="countdown-orn">
+          <div class="countdown-orn-line"></div>
+          <div class="countdown-orn-dia"></div>
+          <div class="countdown-orn-line"></div>
+        </div>
+        <div class="countdown-tiers">
+          <span class="countdown-tier">$20 · Live Workshop</span>
+          <span class="countdown-tier">$35 VIP · + Replay &amp; 1 Month Herb-Curious</span>
+        </div>
+        <div class="countdown-cta">Register · Link in Bio</div>
+      </div>
+      <div class="countdown-brand">
+        <span>The Rooted Wisdom · therootedwisdom.com</span>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
