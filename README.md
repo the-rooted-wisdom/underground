@@ -12,3 +12,5 @@ collab social media account
 - [Workshop Images](workshop-images.html) for use in emails
 - [Social Captions & scripts](workshop-social-captions.md)
 - [Social Graphics](workshop-social-graphics.html)
+
+- [Email landing page](https://buttondown.com/therootedwisdom/archive/beauty-and-the-skin-the-rooted-wisdom-workshop/)
