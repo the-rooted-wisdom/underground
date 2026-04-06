@@ -5,3 +5,10 @@ collab social media account
 - @c_julesgo and @truepowerhealing
 - @mytrinisoul & @therootedwisdomherbal
 - @ericka.mabrie
+
+## Social Media Campaign
+
+- [Style Guide](workshop-bloom-style-guide.html)
+- [Workshop Images](workshop-images.html) for use in emails
+- [Social Captions & scripts](workshop-social-captions.md)
+- [Social Graphics](workshop-social-graphics.html)
