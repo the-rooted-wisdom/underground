@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOLA Retreat Newsletter — Draft for Cohost Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,30..100,0..1&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f5ece0;
+    --paper-deep: #ede2d0;
+    --ink: #2d2419;
+    --ink-soft: #5c4b39;
+    --sage: #8a946a;
+    --sage-deep: #6a724f;
+    --clay: #8b3a2e;
+    --gold: #b8924a;
+    --line: rgba(45, 36, 25, 0.15);
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Lora', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-image:
+      radial-gradient(at 15% 10%, rgba(184, 146, 74, 0.06) 0%, transparent 50%),
+      radial-gradient(at 85% 80%, rgba(138, 148, 106, 0.08) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.15 0 0 0 0 0.10 0 0 0 0 0.05 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    min-height: 100vh;
+    padding: 60px 24px;
+  }
+
+  .page {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  /* Review banner */
+  .review-banner {
+    background: var(--paper-deep);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--clay);
+    padding: 28px 32px;
+    margin-bottom: 56px;
+    border-radius: 2px;
+  }
+
+  .review-banner__label {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin: 0 0 8px;
+  }
+
+  .review-banner h1 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 26px;
+    line-height: 1.2;
+    margin: 0 0 20px;
+    color: var(--ink);
+    font-variation-settings: "opsz" 60, "SOFT" 50;
+  }
+
+  .review-meta {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 8px 20px;
+    font-size: 15px;
+    color: var(--ink-soft);
+  }
+
+  .review-meta dt {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding-top: 2px;
+  }
+
+  .review-meta dd {
+    margin: 0;
+    color: var(--ink);
+  }
+
+  .subject-list, .preheader-block {
+    margin-top: 32px;
+  }
+
+  .subject-list__label, .preheader-block__label {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sage-deep);
+    margin: 0 0 10px;
+  }
+
+  .subject-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .subject-list li {
+    padding: 6px 0 6px 18px;
+    position: relative;
+    font-size: 16px;
+  }
+
+  .subject-list li::before {
+    content: "◇";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    color: var(--gold);
+    font-size: 13px;
+  }
+
+  .preheader-block p {
+    margin: 0;
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  /* Glyph divider — soft visual break, no h-rule */
+  .glyph {
+    text-align: center;
+    color: var(--gold);
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 18px;
+    letter-spacing: 1em;
+    margin: 48px 0 48px 1em;
+    user-select: none;
+  }
+
+  /* Email body container */
+  .email {
+    background: #fbf5e9;
+    border: 1px solid var(--line);
+    padding: 56px 48px;
+    border-radius: 2px;
+    box-shadow: 0 1px 0 rgba(45, 36, 25, 0.04), 0 8px 32px -16px rgba(45, 36, 25, 0.12);
+  }
+
+  .email__label {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--sage-deep);
+    text-align: center;
+    margin: 0 0 36px;
+  }
+
+  /* Header graphic placeholder */
+  .header-graphic {
+    aspect-ratio: 3 / 1;
+    background:
+      repeating-linear-gradient(
+        135deg,
+        rgba(138, 148, 106, 0.08) 0,
+        rgba(138, 148, 106, 0.08) 12px,
+        rgba(184, 146, 74, 0.08) 12px,
+        rgba(184, 146, 74, 0.08) 24px
+      );
+    border: 1.5px dashed var(--sage);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+    margin: 0 0 36px;
+    color: var(--sage-deep);
+    border-radius: 2px;
+  }
+
+  .header-graphic__title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-style: italic;
+    font-size: 18px;
+    font-variation-settings: "opsz" 50;
+  }
+
+  .header-graphic__hint {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  /* Email body content */
+  .email p {
+    margin: 0 0 22px;
+  }
+
+  .email p:first-of-type {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.35;
+    color: var(--ink);
+    margin-bottom: 32px;
+    font-variation-settings: "opsz" 60, "SOFT" 50;
+  }
+
+  .email strong { font-weight: 600; color: var(--ink); }
+  .email em { font-style: italic; }
+
+  .email a {
+    color: var(--clay);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+  }
+
+  .email a:hover {
+    color: var(--gold);
+  }
+
+  .email h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.25;
+    margin: 56px 0 24px;
+    color: var(--ink);
+    font-variation-settings: "opsz" 60, "WONK" 1;
+  }
+
+  .pricing-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px;
+  }
+
+  .pricing-list li {
+    padding: 10px 0 10px 22px;
+    position: relative;
+  }
+
+  .pricing-list li::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    color: var(--gold);
+    font-size: 13px;
+  }
+
+  .workshop {
+    margin: 0 0 28px;
+    padding-left: 18px;
+    border-left: 2px solid var(--sage);
+  }
+
+  .workshop__title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 500;
+    font-size: 19px;
+    margin: 0 0 2px;
+    color: var(--ink);
+  }
+
+  .workshop__title em {
+    color: var(--clay);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .workshop__date {
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin: 0 0 8px;
+    letter-spacing: 0.02em;
+  }
+
+  .workshop__desc {
+    margin: 0;
+  }
+
+  .signoff {
+    margin-top: 48px;
+    font-family: 'Fraunces', Georgia, serif;
+    font-style: italic;
+    font-size: 19px;
+    color: var(--ink);
+    font-variation-settings: "opsz" 50, "SOFT" 50;
+  }
+
+  .signoff__name {
+    display: block;
+    font-style: normal;
+    margin-top: 2px;
+  }
+
+  /* Footer note */
+  .footer-note {
+    margin-top: 56px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-style: italic;
+    letter-spacing: 0.02em;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    body { padding: 32px 16px; }
+    .review-banner { padding: 22px 20px; }
+    .review-banner h1 { font-size: 22px; }
+    .review-meta { grid-template-columns: 1fr; gap: 4px 0; }
+    .review-meta dt { padding-top: 12px; }
+    .email { padding: 36px 24px; }
+    .email p:first-of-type { font-size: 20px; }
+    .email h2 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <section class="review-banner">
+    <p class="review-banner__label">Draft · For Cohost Review</p>
+    <h1>NOLA Retreat Newsletter</h1>
+    <dl class="review-meta">
+      <dt>For</dt>
+      <dd>Julie Moody-Freeman &amp; Ericka Mabrie</dd>
+      <dt>Platform</dt>
+      <dd>ButtonDown</dd>
+      <dt>Purpose</dt>
+      <dd>Promote early bird pricing for the New Orleans Ancestral Excursion (October 29 – November 1, 2026)</dd>
+    </dl>
+
+    <div class="subject-list">
+      <p class="subject-list__label">Subject Line Options</p>
+      <ul>
+        <li>Early bird is open: New Orleans, October 29 – November 1</li>
+        <li>8 spots. May 30 deadline. New Orleans is calling.</li>
+        <li>An Ancestral Excursion — early bird is now open</li>
+      </ul>
+    </div>
+
+    <div class="preheader-block">
+      <p class="preheader-block__label">Preheader</p>
+      <p>8 spots at this rate, and what we're studying all summer long.</p>
+    </div>
+  </section>
+
+  <div class="glyph">✦ ✦ ✦</div>
+
+  <article class="email">
+    <p class="email__label">Newsletter Body</p>
+
+    <div class="header-graphic" role="img" aria-label="Header graphic placeholder">
+      <span class="header-graphic__title">Header graphic</span>
+      <span class="header-graphic__hint">To be added · ~600 × 200</span>
+    </div>
+
+    <p>This October, we're going to New Orleans.</p>
+
+    <p>From <strong>October 29 through November 1</strong>, I'll be co-leading <strong>An Ancestral Excursion</strong> — an intimate journey to one of the most ancestrally charged cities in the African diaspora, held at the convergence of Samhain, Día de los Muertos, and Halloween. Three traditions. One thinning of the veil. One city that knows how to hold all of it.</p>
+
+    <p>This isn't a tour. It's a grounding — in place, in lineage, in the inheritance we carry as descendants of the diaspora.</p>
+
+    <p>I'm holding this container alongside <strong>Julie Moody-Freeman</strong> (Spiritual Herbalist &amp; Galactic Astrologer) and <strong>Ericka Mabrie</strong> (Healer &amp; Baker, carrier of faery medicine). Three guides, three lineages, one container shaped by ceremony, plant medicine, and the city itself.</p>
+
+    <p><strong>Early bird pricing is open now.</strong></p>
+
+    <ul class="pricing-list">
+      <li><strong>The Excursion</strong> — $595 (save $130 off the $725 standard rate)</li>
+      <li><strong>The Full Immersion (VIP)</strong> — $950, with a private consultation with the guide of your choice, an intimate shared meal, and a curated welcome gift</li>
+    </ul>
+
+    <p><strong>Only 8 spots at this rate. Early bird closes May 30, 2026</strong> — or whenever the seats fill, whichever comes first.</p>
+
+    <p>Full details, what's included, and registration live at <a href="https://therootedwisdom.com/retreats/">therootedwisdom.com/retreats</a>.</p>
+
+    <h2>What we're studying this summer</h2>
+
+    <p>The road to October passes through the summer apothecary. Five sessions, one each month, all at <strong>6pm PT</strong>. Registration for each opens closer to its date — keep an eye on <a href="https://therootedwisdom.com/workshops/">therootedwisdom.com/workshops</a>.</p>
+
+    <div class="workshop">
+      <p class="workshop__title">May — Electuaries &amp; Pills</p>
+      <p class="workshop__date">Wednesday, May 27 · 6pm PT</p>
+      <p class="workshop__desc">Honey, herbs, and the kitchen apothecary at its sweetest. We'll blend electuaries and roll pills by hand. Old medicine, made simple, made to share.</p>
+    </div>
+
+    <div class="workshop">
+      <p class="workshop__title">June — Don't Bite Me</p>
+      <p class="workshop__date">Wednesday, June 17 · 6pm PT</p>
+      <p class="workshop__desc">Mosquito season has opinions. We'll answer back with herbal repellents, after-bite remedies, and the deeper work of becoming less appealing to biting things in the first place.</p>
+    </div>
+
+    <div class="workshop">
+      <p class="workshop__title">July — The Pleasure Garden: Sensual Herbalism</p>
+      <p class="workshop__date">Wednesday, July 15 · 6pm PT</p>
+      <p class="workshop__desc">Rose, damiana, hibiscus, jasmine, cacao. The plants that open the body to pleasure and remind us that delight is medicine, too. Bring your senses; we're feeding all of them.</p>
+    </div>
+
+    <div class="workshop">
+      <p class="workshop__title">August — Matters of the Heart <em>with Julie &amp; Ericka</em></p>
+      <p class="workshop__date">Wednesday, August 19 · 6pm PT</p>
+      <p class="workshop__desc">The heart is muscle, vessel, and knower. Together we'll work with the herbs that tend it on every level: circulatory tone, grief held in the chest, and the slow work of opening again.</p>
+    </div>
+
+    <div class="workshop">
+      <p class="workshop__title">September — Harvest Baths</p>
+      <p class="workshop__date">Wednesday, September 16 · 6pm PT</p>
+      <p class="workshop__desc">The doorway month. We'll gather what the season has given — rosemary, basil, rue, marigold, late roses — and put it into water for cleansing, threshold, and arrival. The bath you draw before you walk into ceremony.</p>
+    </div>
+
+    <h2>All of it, in one place</h2>
+
+    <p>Every workshop above — May through September, replays included — is part of the <strong>Herb-Curious</strong> membership. So is the living library of recorded sessions, seasonal planners, the private community portal, and the steady company of folks walking this work alongside you.</p>
+
+    <p>From $15/month or $150 for the year. <a href="https://therootedwisdom.com/learn/community/">Step into Herb-Curious</a>.</p>
+
+    <p>And then we land in New Orleans together. Reserve your seat at <a href="https://therootedwisdom.com/retreats/">therootedwisdom.com/retreats</a>.</p>
+
+    <p class="signoff">
+      Stay Rooted,
+      <span class="signoff__name">Dara</span>
+    </p>
+  </article>
+
+  <p class="footer-note">A draft. Awaiting your eyes, your edits, your blessings.</p>
+
+</div>
+</body>
+</html>
